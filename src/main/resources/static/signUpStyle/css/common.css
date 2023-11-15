@@ -1,0 +1,400 @@
+@charset "UTF-8";
+.max-container {
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.btn {
+  height: 60px;
+  line-height: 60px;
+  padding: 0 8px;
+  border-radius: 4px;
+  display: flex;
+  gap: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 24px;
+}
+.btn.full {
+  width: 100%;
+  padding: 0 8px;
+}
+.btn.w {
+  background-color: #fff;
+  border: 1px solid #000;
+}
+.btn.w:hover {
+  background-color: #FFD230;
+  border-color: transparent;
+}
+.btn.yel {
+  background-color: #FFD230;
+}
+.btn.yel:hover {
+  background-color: #FEC84B;
+}
+.btn.g {
+  padding: 0 30px;
+  background-color: #EEF1F6;
+}
+.btn.g:hover {
+  background-color: #E4E8EE;
+}
+.btn.m-145 {
+  max-width: 145px;
+}
+.btn.m-500 {
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+}
+.btn:disabled {
+  background-color: #EEF1F6;
+  color: #CDD3DD;
+  cursor: default;
+}
+.btn:disabled:hover {
+  background-color: #EEF1F6;
+  color: #CDD3DD;
+}
+@media (max-width: 768px) {
+  .btn {
+    font-size: 0.875rem;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 8px;
+  }
+}
+.btn a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn {
+  color: #8D99A8;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.search-btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 768px) {
+  .search-btn {
+    font-size: 0.8125rem;
+  }
+}
+
+input:not([type=checkbox], [type=radio]) {
+  height: 60px;
+  padding: 0 20px;
+  border-radius: 4px;
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #CDD3DD;
+  font-size: 1.125rem;
+}
+input:not([type=checkbox], [type=radio])::-moz-placeholder {
+  color: #8d99a8;
+  line-height: 1;
+}
+input:not([type=checkbox], [type=radio])::placeholder {
+  color: #8d99a8;
+  line-height: 1;
+}
+input:not([type=checkbox], [type=radio]):hover {
+  border: 1px solid #000;
+}
+input:not([type=checkbox], [type=radio]).error {
+  border-color: #F04438;
+}
+@media (max-width: 768px) {
+  input:not([type=checkbox], [type=radio]) {
+    height: 48px;
+    font-size: 0.875rem;
+    padding: 0 14px;
+  }
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 768px) {
+  label {
+    font-size: 0.8125rem;
+  }
+}
+
+input[type=radio] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.custom-radio {
+  display: inline-block;
+  vertical-align: top;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid #CDD3DD;
+  position: relative;
+  border-radius: 50%;
+  transition: border 0.6s ease;
+}
+.custom-radio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #cdd3dd;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: all 0.6s;
+}
+@media (max-width: 768px) {
+  .custom-radio::after {
+    width: 8px;
+    height: 8px;
+  }
+}
+@media (max-width: 768px) {
+  .custom-radio {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+input[type=radio]:checked + .custom-radio {
+  border: 1px solid #FFD230;
+}
+input[type=radio]:checked + .custom-radio::after {
+  background-color: #ffd230;
+}
+
+.checkbox input {
+  display: none;
+}
+
+.checkbox_icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid #CDD3DD;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox_icon::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/icon/checkbox.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: none;
+}
+
+.checkbox input:checked + .checkbox_icon {
+  border-color: #FFD230;
+}
+.checkbox input:checked + .checkbox_icon::before {
+  display: block;
+}
+
+.select {
+  display: flex;
+  width: 100%;
+  border: 1px solid #E4E8EE;
+  border-radius: 4px;
+  position: relative;
+}
+.select:hover {
+  border-color: #000;
+}
+.select.active {
+  border-color: #FFD230;
+  box-shadow: 0px 0px 0px 3px #FEEFC7;
+}
+@media (max-width: 768px) {
+  .select {
+    font-size: 0.875rem;
+  }
+}
+
+.select .selected {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+@media (max-width: 768px) {
+  .select .selected {
+    height: 48px;
+    padding: 0 14px;
+  }
+}
+
+.select .selected .selected-value {
+  max-width: 90px;
+}
+
+.select ul li,
+.select .selected .selected-value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select ul {
+  display: none;
+  width: 100%;
+  padding: 8px 0;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  top: calc(100% + 10PX);
+  background-color: #FFF;
+  z-index: 1;
+  border-radius: 4px;
+  max-height: 316px;
+  overflow-y: auto;
+}
+.select ul::-webkit-scrollbar {
+  width: 6px;
+}
+.select ul::-webkit-scrollbar-thumb {
+  background-color: #cdd3dd;
+  border-radius: 3px;
+}
+
+.select.active ul {
+  display: block;
+}
+
+.select ul li {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+@media (max-width: 768px) {
+  .select ul li {
+    height: 48px;
+    padding: 0 14px;
+  }
+}
+
+.select ul li:hover {
+  background: #EEF1F6;
+}
+
+.c-r {
+  color: #F04438;
+}
+
+.blank-input {
+  position: relative;
+  margin-bottom: 21px;
+}
+.blank-input::after {
+  content: "필수 입력 항목입니다." !important;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  content: "";
+  display: block;
+  color: #F04438;
+  margin-top: 12px;
+  margin-left: 2px;
+  font-size: 1.125rem;
+}
+@media (max-width: 768px) {
+  .blank-input::after {
+    font-size: 0.875rem;
+  }
+}
+.blank-input input {
+  border-color: #f04438;
+}
+
+.error-input {
+  position: relative;
+  margin-bottom: 21px;
+}
+.error-input::after {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  content: "";
+  display: block;
+  color: #F04438;
+  margin-top: 12px;
+  margin-left: 2px;
+  font-size: 1.125rem;
+}
+@media (max-width: 768px) {
+  .error-input::after {
+    font-size: 0.875rem;
+  }
+}
+.error-input input {
+  border-color: #f04438;
+}
+
+.gender-input-box {
+  margin-bottom: 0;
+  position: static;
+}
+
+.etc-input-box {
+  width: 100%;
+  display: none;
+}
+.etc-input-box.active {
+  display: block;
+}
+
+.id-error::after {
+  content: "유효하지 않은 아이디 입니다.";
+  display: none;
+}
+
+.pw-error::after {
+  content: "유효하지 않은 비밀번호 입니다.";
+  display: none;
+}
+
+.use-id-error::after {
+  content: "사용중인 아이디입니다. ";
+  display: none;
+}
+
+.form-pw-error::after {
+  content: "8~30자리 영문 대/소문자, 숫자, 특수문자를 조합해서 입력해 주세요.";
+  display: none;
+}
+
+.re-pw-error::after {
+  content: "비밀번호가 일치하지 않습니다.";
+  display: none;
+}
+
+.certification--error::after {
+  display: none;
+  content: "인증번호가 일치하지 않습니다.";
+}

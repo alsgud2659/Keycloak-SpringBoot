@@ -1,0 +1,44 @@
+server:
+  port: 9091
+
+#------------------------------------------
+# Keycloak
+#------------------------------------------
+keycloak:
+  enabled: true
+  realm: my-realm
+  auth-server-url: http://172.30.72.236:8080
+  ssl-required: external
+  resource: test-client
+  credentials:
+    secret: iMo3C3mKWCfjcMOvWhHYUBL6IumsOKeg
+  use-resource-role-mappings: true
+  bearer-only: false
+
+
+logging:
+  level:
+    root: INFO
+    com.psc.sample.keycloak: DEBUG
+    org:
+      springframework: DEBUG
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  thymeleaf:
+    prefix:
+      classpath: /static/*
+    cache: false
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: false
+
+

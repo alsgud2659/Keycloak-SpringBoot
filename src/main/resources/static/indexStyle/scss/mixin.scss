@@ -1,0 +1,30 @@
+$mc:#FFD230 ;
+$sc: #FEDF89 ;
+$mb:#F3F6F9;
+$w: #fff;
+$b: #000;
+$g: #8D99A8;
+$dg: #4A4A52;
+
+@function px($size) {
+    @return calc(calc($size / 16)  *  1rem);
+    }
+
+
+@mixin laptop {
+    @media (max-width: 1300px) {
+        @content
+    }
+}
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+    
+@mixin mobile {
+@media  (max-width: 768px ) {
+    @content;
+    }
+}

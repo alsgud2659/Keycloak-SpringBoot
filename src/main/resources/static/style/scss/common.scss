@@ -1,0 +1,547 @@
+@import './mixin.scss';
+.all-in-one-wrap{
+
+    .btn{
+          padding: 0 12px;
+          height: 36px;
+          font-size: px(14);
+          border-radius: 6px;
+          &.middle{
+            height: 48px;
+            padding: 0 24px; 
+            font-size: px(16);
+            @include mobile{
+              font-size: px(13);
+              height: 36px;
+            }
+          }
+        &.max-w{
+            max-width: 180px;
+            width: 100%;
+            text-align: center;
+            justify-content: space-between;
+            &.center{
+              justify-content: center;
+            }
+        }
+        &.yel{
+            background-color: $mc;
+            &:hover{
+                background-color: #FEC84B;
+            }
+        }              
+        &.w{
+            background-color: #FFF;
+            border: 1px solid #CDD3DD;
+            &:hover{
+                border-color: $mc;
+                background-color: $mc;
+            }
+        }
+        &.g{
+            background-color: #EEF1F6;
+            &:hover{
+                background-color: #E4E8EE;
+            }
+        }
+        a{
+          width: 100%; 
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        }
+    }
+    
+    
+    // 셀렉트박스
+      
+    .select-company {
+        display: flex;
+        width: 100%;
+        border: 1px solid #E4E8EE;
+        border-radius: 4px;
+        position: relative;
+        &:hover{
+            border-color: #000 ;
+        }
+        &.active{
+            border-color: #FFD230;
+            box-shadow: 0px 0px 0px 3px #FEEFC7;
+            .arrow{
+                transform: rotate(180deg);
+            }
+        }
+        &.select-company{
+            width: 180px;
+        }
+
+    }
+      
+      .select-company .selected {
+        display: flex;
+        align-items: center;
+        height: 36px;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 12px;
+        // @include mobile{
+        //     height: 48px;
+        //     padding: 0 14px;
+        // }
+    
+      }
+      
+      .select-company .selected .selected-value {
+        max-width: 90px;
+      }
+      
+      
+      .select-company ul li,
+      .select-company .selected .selected-value {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .select-company ul {
+        display: none;
+        width: 240px;
+        box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+        position: absolute;
+        top: calc(100% + 10PX);
+        background-color: #FFF;
+        z-index: 1;
+        border-radius: 4px;
+        max-height: 316px;
+        overflow-y: auto;
+        &::-webkit-scrollbar{
+            width: 6px;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: #cdd3dd;
+            border-radius: 3px;
+        }
+    }
+      
+      .select-company.active ul {
+        display: block;
+      }
+      
+      .select-company ul li {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        gap: 8px;
+        cursor: pointer;
+        button{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        &::before{
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        &.selected-option{
+            // background-color: #E4E8EE;
+            &::before{
+                background-image: url(/assets/icon/default-selected.svg);
+            }
+        }
+      }
+      
+      .select-company ul li:hover {
+        background: #EEF1F6;
+      }
+    
+      .option-btn{
+        border-top: 1px solid #E4E8EE;
+    }
+    .option-icon{
+        width: 20px;
+        height: 20px;
+    }
+    // 셀렉트박스 qna
+      
+    .select-qna {
+        display: flex;
+        width: 100%;
+        border: 1px solid #E4E8EE;
+        border-radius: 4px;
+        position: relative;
+        &:hover{
+            border-color: #000 ;
+        }
+        &.active{
+            border-color: #FFD230;
+            box-shadow: 0px 0px 0px 3px #FEEFC7;
+            .arrow{
+                transform: rotate(180deg);
+            }
+        }
+        &.select-qna{
+            width: 100%;
+        }
+
+    }
+      
+      .select-qna .selected {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 12px;
+        @include mobile{
+            height: 36px;
+            padding: 0 12px;
+            font-size: px(13);
+        }
+    
+      }
+      
+      .select-qna .selected .selected-value {
+        max-width: 100%;
+      }
+      
+      
+      .select-qna ul li,
+      .select-qna .selected .selected-value {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .select-qna ul {
+        display: none;
+        width: 100%;
+        box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+        position: absolute;
+        top: calc(100% + 10PX);
+        background-color: #FFF;
+        z-index: 1;
+        border-radius: 4px;
+        max-height: 316px;
+        overflow-y: auto;
+        &::-webkit-scrollbar{
+            width: 6px;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: #cdd3dd;
+            border-radius: 3px;
+        }
+    }
+      
+      .select-qna.active ul {
+        display: block;
+      }
+      
+      .select-qna ul li {
+        height: 48px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        gap: 8px;
+        cursor: pointer;
+        button{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        &.selected-option{
+            background-color: #E4E8EE;
+        }
+        @include mobile{
+          height: 36px;
+          font-size: px(13);
+        }
+      }
+      
+      .select-qna ul li:hover {
+        background: #EEF1F6;
+      }
+    
+      //셀렉트-2
+      .select-grey {
+          cursor: pointer;
+          display: flex;
+          // width: 100%;
+          // border: 1px solid #E4E8EE;
+          border-radius: 4px;
+          position: relative;
+          font-size: px(14);
+          &:hover{
+              background-color: #EEF1F6;
+          }
+          &.active{
+              background-color: #E4E8EE;
+              .arrow{
+                  transform: rotate(180deg);
+              }
+          }
+          .arrow{
+              width: 16px;
+          }
+      }
+        
+        .select-grey .selected {
+          display: flex;
+          align-items: center;
+          height: 36px;
+          width: 100%;
+          justify-content: space-between;
+          padding: 0 12px;
+          // @include mobile{
+          //     height: 48px;
+          //     padding: 0 14px;
+          // }
+      
+        }
+        
+        .select-grey .selected .selected-value {
+          max-width: 90px;
+        }
+        
+        
+        .select-grey ul li,
+        .select-grey .selected .selected-value {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        
+        .select-grey ul {
+          display: none;
+          // width: 240px;
+          box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+          position: absolute;
+          top: calc(100% + 10PX);
+          background-color: #FFF;
+          z-index: 1;
+          border-radius: 4px;
+          max-height: 316px;
+          overflow-y: auto;
+          @include mobile{
+            right: 0;
+          }
+          &::-webkit-scrollbar{
+              width: 6px;
+          }
+          &::-webkit-scrollbar-thumb{
+              background-color: #cdd3dd;
+              border-radius: 3px;
+          }
+      }
+        
+        .select-grey.active ul {
+          display: block;
+        }
+        
+        .select-grey ul li {
+          height: 36px;
+          display: flex;
+          align-items: center;
+          padding: 0 12px;
+          gap: 8px;
+          cursor: pointer;
+          justify-content: space-between;
+      
+          &:hover{
+              background-color: #E4E8EE;
+          }
+          &::after{
+              content: "";
+              display: block;
+              width: 20px;
+              height: 20px;
+              background-position: center;
+              background-repeat: no-repeat;
+          }
+          &.selected-option{
+              // background-color: #E4E8EE;
+              &::after{
+                  background-image: url(/assets/icon/grey-selected.svg);
+              }
+          }
+        }
+        
+        .select-grey ul li:hover {
+          background: #EEF1F6;
+        }
+      
+        .option-btn{
+          border-top: 1px solid #E4E8EE;
+      }
+      .option-icon{
+          width: 20px;
+          height: 20px;
+      }
+
+      // 인풋
+      input:not([type='checkbox'],[type='radio']){
+        height: 48px;
+        padding: 0 12px;
+        border-radius: 4px;
+        outline: none;
+        background-color: $w;
+        border: 1px solid #CDD3DD;
+        font-size: px(18);
+        &:disabled{
+          background-color: #F8F9FB;
+        }
+        &:read-only{
+          background-color: #F8F9FB;
+        }
+        &::placeholder{
+          color: #8D99A8;
+        }
+        @include mobile{
+          height: 36px;
+          font-size: px(13) !important;
+        }
+    }
+    .search-input{
+      max-width: 320px;
+      position: relative;
+      width: 100%;
+
+      input{
+        width: 100%;
+        padding-right: 40px;
+        font-size: px(15);
+      }
+      button{
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        @include mobile{
+          max-width: 16px;
+        }
+      }
+      @include mobile{
+        max-width: 100%;
+      }
+    }
+
+// 라디오버튼 커스텀
+label{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @include mobile{
+      font-size: px(13);
+  }
+}
+
+  input{
+      &[type="radio"]{
+          position:absolute;
+          top:0;
+          left:0;
+          visibility:hidden;
+          }
+      }
+  .custom-radio {
+      display:inline-block;
+      vertical-align:top;
+      width:20px;
+      height:20px;
+      background:#fff;
+      border:1px solid #CDD3DD;
+      position:relative;
+      border-radius: 50%;
+      transition:border .6s ease;
+      &::after{
+          content: "";
+          width: 10px;
+          height: 10px;
+          background-color: #cdd3dd;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          transition:all .6s;
+          @include mobile{
+              width:8px;
+              height:8px;
+          }
+      }
+      @include mobile{
+          width:16px;
+          height:16px;
+      }
+    }
+  
+    input[type="radio"]:checked + .custom-radio {
+      border: 1px solid #FFD230;
+      &::after{
+          background-color: #ffd230;
+      }
+  }
+  
+    // 체크박스 커스텀
+// 체크박스 인풋은 숨김처리
+.checkbox input {
+  display: none;
+}
+
+// 체크박스 테두리
+.checkbox_icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid #CDD3DD;
+  position: relative;
+  cursor: pointer;
+  @include mobile{
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// 체크박스 가상요소
+.checkbox_icon::before{
+  content: ''; // 가상요소 필수값
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/icon/checkbox.svg);
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: none;
+}
+
+
+// 체크되었을 때 테투리 설정
+.checkbox input:checked + .checkbox_icon {
+      border-color: #FFD230;
+      &::before{
+          display: block;
+      }
+}
+@include mobile{
+  .checkbox_text{
+    font-size: px(13);
+  }
+}
+}    
+
+.pc-only{
+  display: block;
+  @include mobile{
+    display: none;
+  }
+}
+
+
+

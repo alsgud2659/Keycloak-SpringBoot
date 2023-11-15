@@ -1,0 +1,191 @@
+@import './mixin.scss';
+
+body{
+    font-size: px(18);
+}
+
+// 버튼모음
+.btn-box{
+    display: flex;
+    gap: 12px;
+}
+.circle-btn{
+    height: 60px;
+    border-radius: 30px;
+    height: 60px;
+    padding: 0 30px;
+    @include mobile{
+        height: 48px;
+        font-size: px(15);
+    }
+    &.login{
+        font-size: px(16);
+        height: 40px;
+        padding: 0 20px;
+        @include mobile{
+            height: 36px;
+            padding: 0 16px;
+            font-size: px(15);
+        }
+    }
+    &.more{
+        padding: 0 32px;
+    }
+    &.black{
+        background-color: $b;
+        color: $w;
+        border: 1px solid transparent ;
+        &:hover{
+            background-color: transparent;
+            color: #000;
+            border: 1px solid #000;
+        }
+    }
+
+    &.grey{
+        background-color: #EEF1F6;
+    }
+
+    &.opacity{
+        border: 1px solid $b;
+        background-color: transparent ;
+        &:hover{
+            background-color: #000;
+            color: #fff;
+
+        }
+    }
+    &.yellow{
+        background-color: $mc;
+        color: $b;
+        border: 1px solid transparent;
+        &:hover{
+            background-color: #fff;
+            color: #000;
+            border-color: #000;
+        }
+        &.more{
+            &:hover{
+                background-color: #000;
+                color: #fff;
+                img{
+                    filter: invert(1);
+                }
+            }
+        }
+    }
+    &.max-200{
+        max-width: 200px;
+        width: 100%;
+    }
+}
+
+
+
+// 텍스트
+.section-title-box{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 100px;
+    @include tablet{
+        margin-bottom: 54px;
+    }
+    .section-title{
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        span{
+            position: relative;
+            font-size: px(54);
+            font-weight: 700;
+            @include tablet{
+                font-size: px(34);
+            }
+            @include mobile{
+                font-size: px(24);
+            }
+        }
+        @include tablet{
+            img{
+                max-width: 300px;
+            }
+        }
+        @include mobile{
+            text-align: center;
+        }
+    }
+    .section-sub-title{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        span{
+            font-size: px(20);
+            position: relative;
+            line-height: 1.6;
+            @include tablet{
+                font-size: px(16);
+            }
+            @include mobile{
+                font-size: px(15);
+            }
+        }
+        @include mobile{
+            text-align: center;
+        }
+        &.invert{
+            margin-bottom: -10px;
+        }
+    }
+}
+
+.section-title-one{
+    font-size: px(32);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    @include laptop{
+        padding-left: 20px;
+    }
+    &.w{
+        color: #fff;
+    }
+    .c-g{
+        color: #888B8F;
+    }
+    @include tablet{
+        font-size: px(28);
+    }
+}
+//wrap 배경
+.body-wrap{
+    background-color: $mb;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+// 섹션 여백
+.section{
+    padding: 180px 20px;
+    @include tablet{
+        padding: 100px 20px;
+    }
+}
+
+//섹션콘테이너
+.max-container{
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+// 배경
+.cross-bg{
+    position: absolute;
+    background-color: $mc;
+    width: 100%;
+}

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="bizbeeOffice">
+    <!-- <meta property="og:url" content="https://스마트비즈.com"> -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../assets/og-img.png">
+    <meta property="og:description" content="기업경영 솔루션 개발.  IT솔루션, 경영컨설팅, 사이트구축/운영, 시스템유지보수">
+    <link rel="shortcut icon" href="../assets/favicon.ico">
+    <title>bizbee Office</title>
+    <link rel="stylesheet" href="../style/css/link.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class='all-in-one-wrap program-wrap'>
+        <header class="header">
+            <div class="logo">
+                <img src="/assets/images/bizbee-office-logo.png" alt="로고">
+            </div>
+            <div class="header-right">
+                <div class="user-profile user-profile-btn" onclick="profileToggle()" >
+                    <span class="user-img">
+                        <img src="/assets/icon/profile.svg" alt="프로필" class="user-default-img">
+                    </span>
+                    <span >
+                        <span class="user-name"></span>님
+                    </span>
+                    <div class="user-profile-detail ">
+                        <div class="user-profile-detail-header">
+                            <span class="user-img">
+                                <img src="/assets/icon/profile.svg" alt="프로필" class="user-default-img">
+                            </span>
+                            <span class="user-name"></span>님
+                        </div>
+                        <div class="user-profile-detail-body">
+                            <ul class="user-profile-detail-body-ul">
+                                <li class="user-profile-detail-body-li">
+                                    <span class="user-profile-detail-body-title">
+                                        <img src="./assets/icon/user-profile-detail-1.svg" alt="등급">
+                                        회원등급
+                                    </span>
+                                    <span class="user-profile-detail-body-text c-y">
+                                        통합회원
+                                    </span>
+                                </li>
+                                <li class="user-profile-detail-body-li">
+                                    <span class="user-profile-detail-body-title">
+                                        <img src="./assets/icon/user-profile-detail-2.svg" alt="등급">
+                                        회사명
+                                    </span>
+                                    <span class="user-profile-detail-body-text bold">
+                                        주식회사 비즈비
+                                    </span>
+                                </li>
+                                <li class="user-profile-detail-body-li">
+                                    <span class="user-profile-detail-body-title">
+                                        <img src="./assets/icon/user-profile-detail-3.svg" alt="등급">
+                                        이메일
+                                    </span>
+                                    <span class="user-profile-detail-body-text">
+                                        jaeyoung@bizbee.co.kr
+                                    </span>
+                                </li>
+                                <li class="user-profile-detail-body-li">
+                                    <span class="user-profile-detail-body-title">
+                                        <img src="./assets/icon/user-profile-detail-4.svg" alt="등급">
+                                        휴대폰번호
+                                    </span>
+                                    <span class="user-profile-detail-body-text">
+                                        010-1234-5678
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-box">
+                            <button class="btn yel">정보 수정</button>
+                            <button class="btn w">로그아웃</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="select select-company">
+                    <div class="selected ">
+                        <div class="selected-value input">회사 선택</div>
+                        <img src="/assets/icon/select.svg" alt="arrow" class="arrow">
+                    </div>
+                    <ul>
+                        <li class="option">
+                            주식회사 비즈비
+                        </li>
+                        <li class="option">
+                            밸류마크
+                        </li>
+                        <li class="option">
+                            티아이커머스
+                        </li>
+                        <li class="option">
+                            스마트웰
+                        </li>
+                        <li class="option-btn">
+                            <button>
+                                <img src="/assets/icon/option-btn.svg" alt="플러스">
+                                회사 등록
+                            </button>
+                        </li>
+                    </ul>
+                  </div>
+                <button class="btn w">로그아웃</button>
+            </div>
+        </header>
+        <div class="sidebar">
+            <ul class="sidebar-ul">
+                <a href="/home" class="sidebar-li">
+                    <img src="/assets/icon/home-li.svg" alt="홈">
+                </a>
+                <a href='/qna ' class="sidebar-li">
+                    <img src="/assets/icon/qna-li.svg" alt="자주하는질문">
+                </a>
+                <a href="/oneOnOne" class="sidebar-li">
+                    <img src="/assets/icon/per-qna-li.svg" alt="1:1 문의">
+                </a>
+                <a href="/notice" class="sidebar-li">
+                    <img src="/assets/icon/notice-li.svg" alt="공지사항">
+                </a>
+                <a href="/programIntro" class="sidebar-li active">
+                    <img src="/assets/icon/intro.svg" alt="제품소개">
+                </a>
+            </ul>
+        </div>
+            <div class="sidebar-program">
+                <span class="sidebar-program-title">
+                    제품소개
+                </span>
+                 <ul class="sidebar-program-ul">
+                    <li class="sidebar-program-li active">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-erp.svg" alt="erp">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-erp-typo.svg" alt="erp">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>인사</span>
+                                    <span>회계</span>
+                                    <span>영업</span>
+                                    <span>생산</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            인사, 회계, 영업, 재고, 구매/자재, 생산 기능을 갖춘 ERP 솔루션
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-lite.svg" alt="lite">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-lite-typo.svg" alt="lite">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>간편회계</span>
+                                    <span>영수증관리</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            AI 기반 자동회계처리 솔루션. 간편한 거래(매출/매입)관리, 계좌 입/출금, 영수증 관리
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-cfo.svg" alt="cfo">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-cfo-typo.svg" alt="cfo">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>거래자료</span>
+                                    <span>자동수집</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            기업의 거래자료(매입/매출거래, 은행거래), 인건비 및 세금 납부 자료 자동 수집/조회 서비스
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-stay.svg" alt="stay">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-stay-typo.svg" alt="stay">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>근태관리</span>
+                                    <span>유연근로제</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            모바일 기반의 근태관리 솔루션
+주 52시간, 유연 근로제 반영
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-taxbill.svg" alt="taxbill">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-taxbill-typo.svg" alt="taxbill">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>세금계산서</span>
+                                    <span>발급관리</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            전자세금계산서 솔루션
+전자세금계산서 발행
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-tax.svg" alt="tax">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-tax-typo.svg" alt="tax">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>법인세계산</span>
+                                    <span>법인세신고</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            Bizbee ERP 법인세 계산 및 신고
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-office.svg" alt="office">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-office-typo.svg" alt="office">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>세무사용</span>
+                                    <span>erp</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            세무사용 ERP <br>
+수입고객관리, 민원관리, 결산리포트, 수입료관리
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-works.svg" alt="works">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-works-typo.svg" alt="works">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>전자결재</span>
+                                    <span>이메일</span>
+                                    <span>채팅</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            그룹웨어 솔루션<br>
+채팅 및 커뮤니티 기반의 협업 솔루션
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-bizcard.svg" alt="bizcard">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-bizcard-typo.svg" alt="bizcard">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>명함</span>
+                                    <span>연락처관리</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            명함 촬영을 통하여 자동으로 연락처를 등록하고 공유하는 서비스
+                        </div>
+                    </li>
+                    <li class="sidebar-program-li ">
+                        <div class="sidebar-program-li-top">
+                            <div class="sidebar-program-li-img">
+                                <img src="../assets/icon/app-esign.svg" alt="esign">
+                            </div>
+                            <div class="sidebar-program-li-title-box">
+                                <span class="sidebar-program-li-title">
+                                    <img src="../assets/icon/app-esign-typo.svg" alt="esign">
+                                </span>
+                                <span class="sidebar-program-li-sub-title">
+                                    <span>전자계약</span>
+                                    <span>계약관리</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sidebar-program-li-bottom">
+                            클릭 몇 번으로 계약 업무를 간단하게 처리하고 편리하게 관리할 수 있는 전자계약 서비스
+                        </div>
+                    </li>
+                 </ul>
+            </div>
+            
+            <div class="contents program-contents active">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee ERP
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-erp.svg" alt="ERP">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        보이는 경영을 위한 도구
+                                        <span class="program-contents-header-name">
+                                            bizbee ERP 
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        인사 · 회계 · 영업 · 재고 · 구매/자재 · 생산 기능 등 다양한 업종을 위한 최적의 기능과 비즈니스 프로세스를 담은 솔루션입니다.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>인사관리</span>
+                                    <span>회계관리</span>
+                                    <span>영업/물류관리</span>
+                                    <span>구매/자재관리</span>
+                                    <span>생산/외주관리</span>
+                                    <span>시스템관리</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <button class="middle w btn max-w">서비스 소개서<img src="../assets/icon/btn-down.svg" alt="소개서다운"></button>
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-1.png" alt="erp소개">
+                    <img src="../assets/images/program-intro-1-m.png" alt="erp소개">
+                </div>
+            </div>
+            <div class="contents program-contents ">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee ERP Lite
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-lite.svg" alt="ERP">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        경영이 쉬워집니다
+                                        <span class="program-contents-header-name">
+                                            bizbee ERP Lite <span class="open-ready">오픈예정!</span>
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        AI 기반 자동회계처리 솔루션. 회계와 인사 업무가 익숙하지 않아도 업무 처리가 가능합니다.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>AI 전표처리</span>
+                                    <span>급여관리</span>
+                                    <span>근태관리</span>
+                                    <span>모바일업무처리</span>
+                                    <span>커뮤니티</span>
+                                    <span>업무채팅</span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <button class="middle w btn max-w">서비스 소개서<img src="../assets/icon/btn-down.svg" alt="소개서다운"></button>
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-2.png" alt="erpLite소개">
+                    <img src="../assets/images/program-intro-2-m.png" alt="erpLite소개">
+                </div>
+            </div>
+            <div class="contents program-contents ">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee CFO
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-cfo.svg" alt="ERP">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        경영이 쉬워집니다
+                                        <span class="program-contents-header-name">
+                                            bizbee CFO
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        매입 · 매출, 은행 거래, 카드 매출 등의 경영 정보를 언제 어디서나 실시간 확인할 수 있습니다. 
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>국세청 홈택스 자료, 은행 거래내역 등 수집</span>
+                                    <span>실시간 경영현황 확인/관리</span>
+                                    <span>수입/지출 비교분석</span>
+                                    <span>항목별 지출현황</span> 
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <button class="middle w btn max-w">서비스 소개서<img src="../assets/icon/btn-down.svg" alt="소개서다운"></button>
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-3.png" alt="cfo소개">
+                    <img src="../assets/images/program-intro-3-m.png" alt="cfo소개">
+                </div>
+            </div>
+            <div class="contents program-contents">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee Stay
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-stay.svg" alt="ERP">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        손 안의 경영 전문가
+                                        <span class="program-contents-header-name">
+                                            bizbee Stay
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        주 52시간 근무제, 유연 근로제를 반영한 근태관리 시스템
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>출퇴근관리</span>
+                                    <span>연장근무관리</span>
+                                    <span>휴가생성 및 사용관리</span>
+                                    <span>52시간 근무제 및 유연근로제 적용 관리</span> 
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <!-- <button class="middle w btn max-w">서비스 소개서<img src="../assets/icon/btn-down.svg" alt="소개서다운"></button> -->
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-4.png" alt="cfo소개">
+                    <img src="../assets/images/program-intro-4-m.png" alt="cfo소개">
+                </div>
+            </div>
+            <div class="contents program-contents ">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee TaxBill 
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-taxbill.svg" alt="ERP">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        스마트한 발급의 시작
+                                        <span class="program-contents-header-name">
+                                            bizbee TaxBill 
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        편리하게, 복잡한 과정 없이 발급 비용 70원으로 시작하는 전자세금계산서 발급 솔루션 
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>세금계산서 발급</span>
+                                    <span>세금계산서 역발급</span>
+                                    <span>수정세금계산서 발급</span>
+                                    <span>거래명세서 발급</span> 
+                                    <span>휴폐업 조회 </span> 
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <!-- <button class="middle w btn  -->
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-5.png" alt="cfo소개">
+                    <img src="../assets/images/program-intro-5-m.png" alt="cfo소개">
+                </div>
+            </div>
+            <div class="contents program-contents ">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee Tax
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-tax.svg" alt="ERP">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        bizbee ERP 법인세 계산 및 신고
+                                        <span class="program-contents-header-name">
+                                            bizbee Tax
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        편리하게, 복잡한 과정 없이 발급 비용 70원으로 시작하는 전자세금계산서 발급 솔루션 
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>데이터 컨버트 및 연동</span>
+                                    <span>예상법인세 산출</span>
+                                    <span>자료 호환</span>
+                                    <span>전자신고 지원</span> 
+    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <button class="middle w btn max-w">서비스 소개서<img src="../assets/icon/btn-down.svg" alt="소개서다운"></button>
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-6.png" alt="cfo소개">
+                    <img src="../assets/images/program-intro-6-m.png" alt="cfo소개">
+                </div>
+            </div> 
+            <div class="contents program-contents ">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee ERP
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-office.svg" alt="ERP">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        세무사용 Office T
+                                        <span class="program-contents-header-name">
+                                            bizbee Office T <span class="open-ready">오픈예정!</span>
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        편리하게, 복잡한 과정 없이 발급 비용 70원으로 시작하는 전자세금계산서 발급 솔루션 
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>수입고객관리</span>
+                                    <span>민원관리</span>
+                                    <span>결산리포트</span>
+                                    <span>수입료관리</span> 
+    
+                                </span>
+                            </div>
+                        </div>
+                        <!-- <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <button class="middle w btn max-w">서비스 소개서<img src="../assets/icon/btn-down.svg" alt="소개서다운"></button>
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-7.png" alt="office소개">
+                    <img src="../assets/images/program-intro-7-m.png" alt="office소개">
+                    <!-- <span class="update">업데이트 예정</span> -->
+                </div>
+            </div>
+            <div class="contents program-contents  ">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee Works
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-works.svg" alt="works">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        업무를 쉽고 빠르게
+                                        <span class="program-contents-header-name">
+                                            bizbee Works
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        그룹웨어 및 협업 솔루션. 함께 일하는 모든 사람들을 연결하는 열린 업무 공간
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>전자결재</span>
+                                    <span>이메일</span>
+                                    <span>업무관리</span>
+                                    <span>일정관리</span> 
+                                    <span>To-do List</span> 
+                                    <span>업무채팅</span> 
+    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <button class="middle w btn max-w">서비스 소개서<img src="../assets/icon/btn-down.svg" alt="소개서다운"></button>
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-8.png" alt="office소개">
+                    <img src="../assets/images/program-intro-8-m.png" alt="office소개">
+                </div>
+            </div>
+            <div class="contents program-contents  ">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee BizCard
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-bizcard.svg" alt="bizcard">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        명함, 빠르게 저장하고 편리하게 관리하자
+                                        <span class="program-contents-header-name">
+                                            bizbee BizCard
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        팀원간 고객 명함 공유, 퇴사시 인수인계, 회사 고객 명함자산 통합 관리, 미팅 메모 공유 등 기업전용 명함 CRM
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>명함 촬영</span>
+                                    <span>명함 공유</span>
+                                    <span>명함 관리</span>
+                                    <span>메모 공유</span> 
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <!-- <button class="middle w btn m  -->
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-9.png" alt="office소개">
+                    <img src="../assets/images/program-intro-9-m.png" alt="office소개">
+                </div>
+            </div>
+            <div class="contents program-contents  ">
+                <div class="program-contents-back-header">
+                    <button class="pop-back-btn" onclick="popback()">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        bizbee eSign
+                    </span>
+                </div>
+                <div class="contents-box w ">
+                    <div class="program-contents-header">
+                        <div class="program-contents-header-left">
+                            <div class="program-contents-header-left-top">
+                                <div class="program-contents-header-img">
+                                    <img src="../assets/icon/app-bizcard.svg" alt="bizcard">
+                                </div>
+                                <div class="program-contents-header-title-box">
+                                    <span class="program-contents-header-title">
+                                        계약부터 관리까지 스마트하게!
+                                        <span class="program-contents-header-name">
+                                            bizbee eSign
+                                        </span>
+                                    </span>
+                                    <span class="program-contents-header-sub-title">
+                                        복잡한 계약 업무를 클릭 몇 번으로 간단하게 처리하고 손쉽게 관리할 수 있는 전자계약 서비스
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="program-contents-header-left-bottom">
+                                <span class="program-contents-header-funtion">주요기능</span>
+                                <span class="program-contents-header-funtion-ex">
+                                    <span>전자계약</span>
+                                    <span>서면계약서 관리</span>
+                                    <span>간편한 재계약</span>
+                                    <span>맞춤형 계약 지원 </span>
+                                    <span>API 연동 지원 </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-contents-header-right">
+                            <button class="middle yel btn max-w">문의하기 <img src="../assets/icon/btn-qna.svg" alt="버튼문의"></button>
+                            <!-- <button class="middle w btn max-w">  -->
+                            <button class="middle w btn max-w">홈페이지 가기<img src="../assets/icon/btn-link.svg" alt="바로가기"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box w intro-contents-box">
+                    <img src="../assets/images/program-intro-10.png" alt="office소개">
+                    <img src="../assets/images/program-intro-10-m.png" alt="office소개">
+                </div>
+            </div>
+    </div>
+</body>
+</html>
+<script src="../script/main.js"></script>
+<script src="../script/sub.js"></script>

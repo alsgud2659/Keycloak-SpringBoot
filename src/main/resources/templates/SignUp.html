@@ -1,0 +1,922 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="bizbeeOffice">
+    <!-- <meta property="og:url" content="https://스마트비즈.com"> -->
+    <link rel="shortcut icon" href="../assets/favicon.ico">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../../assets/og-img.png">
+    <meta property="og:description" content="기업경영 솔루션 개발.  IT솔루션, 경영컨설팅, 사이트구축/운영, 시스템유지보수">
+    <title>Bizbee Office</title>
+    <link rel="stylesheet" href="../signUpStyle/css/link.css">
+</head>
+<body>
+<div class="login-wrap">
+    <header class="header">
+        <div class="max-container">
+            <div class="logo">
+                <img src="../assets/icon/logo.svg" alt="로고">
+            </div>
+            <button class="close-btn">
+                <img src="../assets/icon/close-x.svg" alt="닫기 버튼">
+            </button>
+        </div>
+    </header>
+    <span class="login-form-title">
+             회원가입
+        </span>
+    <div class="terms-form active">
+        <div class="max-container">
+            <div class="terms-form-title">
+                약관 동의
+            </div>
+            <div class="terms-input-box">
+                <div class="terms-input-row first">
+                    <label class="checkbox">
+                        <input type="checkbox" class="all-check" >
+                        <span class="checkbox_icon"></span>
+                        <span class="checkbox_text">모든 약관에 동의</span>
+                    </label>
+                </div>
+                <div class="terms-input-row">
+                    <label class="checkbox ">
+                        <input type="checkbox" class="essential-check">
+                        <span class="checkbox_icon"></span>
+                        <span class="checkbox_text">[필수] 이용약관 동의</span>
+                    </label>
+                    <button class="terms-btn" onclick="consentPopupOpen(0)">
+                        보기
+                        <img src="../assets/icon/terms-arrow.svg" alt="버튼">
+                    </button>
+                </div>
+                <div class="terms-input-row">
+                    <label class="checkbox">
+                        <input type="checkbox" class="essential-check">
+                        <span class="checkbox_icon"></span>
+                        <span class="checkbox_text">[필수] 개인정보 수집 및 이용 동의</span>
+                    </label>
+                    <button class="terms-btn" onclick="consentPopupOpen(1)">
+                        보기
+                        <img src="../assets/icon/terms-arrow.svg" alt="버튼">
+                    </button>
+                </div>
+                <div class="terms-input-row">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        <span class="checkbox_icon"></span>
+                        <span class="checkbox_text">[선택] 광고성 정보 수신 동의</span>
+                    </label>
+                    <button class="terms-btn" onclick="consentPopupOpen(2)">
+                        보기
+                        <img src="../assets/icon/terms-arrow.svg" alt="버튼">
+                    </button>
+                </div>
+                <div class="terms-input-row last">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        <span class="checkbox_icon"></span>
+                        <span class="checkbox_text">[선택] 개인정보 제3자 제공 동의</span>
+                    </label>
+                    <button class="terms-btn" onclick="consentPopupOpen(3)">
+                        보기
+                        <img src="../assets/icon/terms-arrow.svg" alt="버튼">
+                    </button>
+                </div>
+            </div>
+            <div class="popup-form-input">
+                <div class="popup-btn-box">
+                    <button class="btn w">
+                        <a href="../index.html">
+                            <img src="../assets/icon/btn-arrow.svg" alt="화살표">
+                            이전
+                        </a>
+                    </button>
+                    <button class="btn yel full check-btn" disabled onclick="nextTermsForm(1)">
+                        다음
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="terms-form second ">
+        <div class="max-container">
+            <div class="terms-form-title">
+                로그인 정보 <span class="tip"> <span class="c-r">* </span>표시는 필수 입력 항목입니다.</span>
+            </div>
+            <div class="terms-input-box">
+                <div class="terms-input-col">
+                        <span class="terms-input-col-title">
+                            <span>아이디<span class="c-r"> *</span></span>
+                        </span>
+                    <div class="terms-input-col-box">
+                        <input type="text" placeholder="아이디를 입력해 주세요" class="id-input input">
+                        <button class="btn g">중복 확인</button>
+                    </div>
+                </div>
+                <div class="terms-input-col">
+                            <span class="terms-input-col-title">
+                                <span>비밀번호<span class="c-r"> *</span></span>
+                                <span>8~30자리 영문 대/소문자, 숫자 및 특수문자 조합</span>
+                            </span>
+                    <div class="terms-input-col-box">
+                        <input type="text" placeholder="비밀번호를 입력해 주세요" class="pw-input input">
+                    </div>
+                </div>
+                <div class="terms-input-col">
+                            <span class="terms-input-col-title">
+                                <span>비밀번호 확인<span class="c-r"> *</span></span>
+                            </span>
+                    <div class="terms-input-col-box">
+                        <input type="text" placeholder="비밀번호를 한 번 더 입력해 주세요" class="re-pw-input input">
+                    </div>
+                </div>
+            </div>
+            <div class="terms-form-title">
+                개인 정보 <span class="tip"> <span class="c-r">* </span>표시는 필수 입력 항목입니다.</span>
+            </div>
+            <div class="terms-input-box">
+                <div class="terms-input-col">
+                            <span class="terms-input-col-title">
+                                <span>이름<span class="c-r"> *</span></span>
+                            </span>
+                    <div class="terms-input-col-box">
+                        <input type="text" placeholder="이름을 입력해 주세요" class="name-input input">
+                    </div>
+                </div>
+                <div class="terms-input-col">
+                            <span class="terms-input-col-title">
+                                <span>생년월일/성별 <span class="c-r"> *</span></span>
+                                <span >8~30자리 영문 대/소문자, 숫자 및 특수문자 조합</span>
+                            </span>
+                    <div class="terms-input-col-box max-input">
+                        <input type="text" placeholder="●●●●●●" class="
+                                date-input input">
+                        -
+                        <span class="gender-input-box">
+                                    <input type="text" placeholder="●" class="gender-input input">
+                                    <span>●</span>
+                                    <span>●</span>
+                                    <span>●</span>
+                                    <span>●</span>
+                                    <span>●</span>
+                                    <span>●</span>
+                                </span>
+                    </div>
+                </div>
+                <div class="terms-input-col">
+                        <span class="terms-input-col-title">
+                            <span>방문 경로<span class="c-r"> *</span></span>
+                        </span>
+                    <div class="terms-input-col-box row">
+                        <div class="select visit-path">
+                            <div class="selected ">
+                                <div class="selected-value input">선택</div>
+                                <img src="../assets/icon/select.svg" alt="arrow" class="arrow">
+                            </div>
+                            <ul>
+                                <li class="option">직접 방문</li>
+                                <li class="option">지인 추천</li>
+                                <li class="option">포털 검색</li>
+                                <li class="option">SNS</li>
+                                <li class="option">기타</li>
+                            </ul>
+                        </div>
+                        <div class="etc-input-box"><input class="etc-input" type="text" placeholder="방문 경로를 입력해 주세요"></div>
+                    </div>
+                </div>
+                <div class="terms-input-col">
+                        <span class="terms-input-col-title">
+                            <span>휴대폰 번호<span class="c-r"> *</span></span>
+                        </span>
+                    <div class="terms-input-col-box">
+                        <input type="text" placeholder="숫자만 입력해 주세요" class="phne-input input">
+                    </div>
+                </div>
+                <div class="terms-input-col">
+                            <span class="terms-input-col-title">
+                                <span>이메일<span class="c-r"> *</span></span>
+                            </span>
+                    <div class="terms-input-col-box">
+                        <input type="text" placeholder="이메일 주소를 입력해 주세요" class="email-input input">
+                        <button class="btn g" onclick="emailPopToggle()">인증번호 받기</button>
+                    </div>
+                </div>
+                <div class="terms-input-col">
+                            <span class="terms-input-col-title">
+                                <span>인증번호 확인<span class="c-r"> *</span></span>
+                            </span>
+                    <div class="terms-input-col-box">
+                        <input type="text" placeholder="이메일 인증번호를 입력해 주세요" class="email-certification-input input">
+                        <button class="btn g" disabled>인증하기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-form-input">
+                <div class="popup-btn-box">
+                    <button class="btn w" onclick="nextTermsForm(0)">
+                        <img src="../assets/icon/btn-arrow.svg" alt="화살표">
+                        이전
+                    </button>
+                    <button class="btn yel full" onclick="validateForm()">
+                        회원 가입하기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="terms-form third">
+        <div class="max-container">
+            <div class="sign-complete">
+                <img src="../assets/icon/sign-complete.svg" alt="가입성공">
+                <span>회원가입이 완료되었습니다!</span>
+            </div>
+            <div class="popup-form-input">
+                <div class="popup-btn-box">
+                    <button class="btn yel full">
+                        비즈비 오피스 시작하기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popup-container">
+    <div class="popup-bg"></div>
+    <div class="consent-popup tos">
+        <div class="consent-popup-header">
+                <span class="consent-popup-title">
+                    이용약관 동의
+                </span>
+            <button class="popup-close" onclick="consentPopupClose()">
+                <img src="../assets/icon/close-x.svg" alt="">
+            </button>
+        </div>
+        <div class="consent-popup-body ">
+            <div class="consent-popup-body-title">
+                [필수] 이용약관 동의
+            </div>
+            <div class="consent-popup-body-content">
+                    <span class="consent-popup-body-content-title">
+                        제 1장 - 총칙
+                    </span>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 1 조 (목적)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 2 조 (약관의 효력과 변경)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ①  이 약관은 인터넷사이트에 공지하거나 전자우편, 기타의 방법으로 이용자에게 통지함으로써 효력을 발생합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ②  당사는 이 약관을 변경할 수 있으며, 변경된 약관은 제1항과 같은 방법으로 공지 또는 통지함으로써 효력을 발생합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ③  이 약관의 내용은 서비스가 이루어지는 주사이트(smart- esign.com)에 항상 게시됩니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 3 조 (약관 외 준칙)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관에 명시되지 아니한 사항에 대하여는 관계 법령 및 기타 관습에 따릅니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 4 조 (용어의 정의)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ①  회원 : 당사와 서비스 이용에 관한 계약을 체결한 모든 이용자로 회사관리자와 회사이용자, 개인이용자로 구분됩니다.
+                        </span>
+                </div>
+            </div>
+            <button class="btn yel m-500" onclick="consentPopupClose()">확인</button>
+        </div>
+    </div>
+    <div class="consent-popup privacy">
+        <div class="consent-popup-header">
+                <span class="consent-popup-title">
+                    개인정보 수집 및 이용 동의
+                </span>
+            <button class="popup-close" onclick="consentPopupClose()">
+                <img src="../assets/icon/close-x.svg" alt="">
+            </button>
+        </div>
+        <div class="consent-popup-body ">
+            <div class="consent-popup-body-title">
+                [필수] 개인정보 수집 및 이용 동의
+            </div>
+            <div class="consent-popup-body-content">
+                    <span class="consent-popup-body-content-title">
+                        제 1장 - 총칙
+                    </span>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 1 조 (목적)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 2 조 (약관의 효력과 변경)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ①  이 약관은 인터넷사이트에 공지하거나 전자우편, 기타의 방법으로 이용자에게 통지함으로써 효력을 발생합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ②  당사는 이 약관을 변경할 수 있으며, 변경된 약관은 제1항과 같은 방법으로 공지 또는 통지함으로써 효력을 발생합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ③  이 약관의 내용은 서비스가 이루어지는 주사이트(smart-esign.com)에 항상 게시됩니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 3 조 (약관 외 준칙)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관에 명시되지 아니한 사항에 대하여는 관계 법령 및 기타 관습에 따릅니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 4 조 (용어의 정의)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ①  회원 : 당사와 서비스 이용에 관한 계약을 체결한 모든 이용자로 회사관리자와 회사이용자, 개인이용자로 구분됩니다.
+                        </span>
+                </div>
+            </div>
+            <button class="btn yel m-500" onclick="consentPopupClose()">확인</button>
+        </div>
+    </div>
+    <div class="consent-popup info">
+        <div class="consent-popup-header">
+                <span class="consent-popup-title">
+                    이용약관 동의
+                </span>
+            <button class="popup-close" onclick="consentPopupClose()">
+                <img src="../assets/icon/close-x.svg" alt="">
+            </button>
+        </div>
+        <div class="consent-popup-body ">
+            <div class="consent-popup-body-title">
+                [선택] 광고성 정보 수신 동의
+            </div>
+            <div class="consent-popup-body-content">
+                    <span class="consent-popup-body-content-title">
+                        제 1장 - 총칙
+                    </span>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 1 조 (목적)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 2 조 (약관의 효력과 변경)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ①  이 약관은 인터넷사이트에 공지하거나 전자우편, 기타의 방법으로 이용자에게 통지함으로써 효력을 발생합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ②  당사는 이 약관을 변경할 수 있으며, 변경된 약관은 제1항과 같은 방법으로 공지 또는 통지함으로써 효력을 발생합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ③  이 약관의 내용은 서비스가 이루어지는 주사이트(smart-esign.com)에 항상 게시됩니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 3 조 (약관 외 준칙)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관에 명시되지 아니한 사항에 대하여는 관계 법령 및 기타 관습에 따릅니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 4 조 (용어의 정의)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ①  회원 : 당사와 서비스 이용에 관한 계약을 체결한 모든 이용자로 회사관리자와 회사이용자, 개인이용자로 구분됩니다.
+                        </span>
+                </div>
+            </div>
+            <button class="btn yel m-500" onclick="consentPopupClose()">확인</button>
+        </div>
+    </div>
+    <div class="consent-popup others">
+        <div class="consent-popup-header">
+                <span class="consent-popup-title">
+                    개인정보 제3자 제공 동의
+                </span>
+            <button class="popup-close" onclick="consentPopupClose()">
+                <img src="../assets/icon/close-x.svg" alt="">
+            </button>
+        </div>
+        <div class="consent-popup-body ">
+            <div class="consent-popup-body-title">
+                [필수] 개인정보 제3자 제공 동의
+            </div>
+            <div class="consent-popup-body-content">
+                    <span class="consent-popup-body-content-title">
+                        제 1장 - 총칙
+                    </span>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 1 조 (목적)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관은 스마트비즈 주식회사 (이하 "당사"라 합니다)가 제공하는 전자계약시스템 서비스(이하 "서비스"라 합니다)를 이용함에 있어서 당사와 정보이용자(이하 "이용자"라 합니다)간의 서비스 이용 방법 및 기타 필요한 사항을 규정합니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 2 조 (약관의 효력과 변경)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ①  이 약관은 인터넷사이트에 공지하거나 전자우편, 기타의 방법으로 이용자에게 통지함으로써 효력을 발생합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ②  당사는 이 약관을 변경할 수 있으며, 변경된 약관은 제1항과 같은 방법으로 공지 또는 통지함으로써 효력을 발생합니다.
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ③  이 약관의 내용은 서비스가 이루어지는 주사이트(smart-esign.com)에 항상 게시됩니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 3 조 (약관 외 준칙)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            이 약관에 명시되지 아니한 사항에 대하여는 관계 법령 및 기타 관습에 따릅니다.
+                        </span>
+                </div>
+                <div class="consent-popup-body-content-box">
+                        <span class="consent-popup-body-content-sub-title">
+                            제 4 조 (용어의 정의)
+                        </span>
+                    <span class="consent-popup-body-content-text">
+                            ①  회원 : 당사와 서비스 이용에 관한 계약을 체결한 모든 이용자로 회사관리자와 회사이용자, 개인이용자로 구분됩니다.
+                        </span>
+                </div>
+            </div>
+            <button class="btn yel m-500" onclick="consentPopupClose()">확인</button>
+        </div>
+    </div>
+    <div class="popup popup-fail-search email-popup">
+        <img src="../assets/icon/email.svg" alt="이메일">
+        <span class="popup-fail-search-text">
+                가입된 정보기 일치하지 않습니다.
+            </span>
+        <button class="btn yel" onclick="emailPopToggle()">
+            확인
+        </button>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    // 모든 약관에 동의 체크박스
+    const checkAllCheckbox = document.querySelector('.terms-input-box .all-check');
+    // 하위 체크박스들
+    const inputCheckboxes = document.querySelectorAll('.terms-input-box input[type="checkbox"]:not(.all-check)');
+
+    if(checkAllCheckbox !== null){
+        // 모든 약관에 동의 체크박스의 상태에 따라 하위 체크박스들을 변경
+        checkAllCheckbox.addEventListener('change', function() {
+            inputCheckboxes.forEach((check) => {
+                check.checked = checkAllCheckbox.checked;
+            });
+            checkAllEssentialCheckboxes();
+        });
+
+        // 하위 체크박스 중 하나라도 해제될 때 모든 약관에 동의 체크박스 해제
+        checkAllCheckbox.addEventListener('change', function() {
+            inputCheckboxes.forEach((check) => {
+                check.checked = checkAllCheckbox.checked;
+            });
+            checkAllEssentialCheckboxes();
+        });
+
+        // 하위 체크박스 중 하나라도 해제될 때 모든 약관에 동의 체크박스 해제
+        inputCheckboxes.forEach((check) => {
+            check.addEventListener('change', function() {
+                if (!check.checked) {
+                    checkAllCheckbox.checked = false;
+                } else {
+                    // 모든 하위 체크박스가 체크되었는지 확인
+                    const allChecked = Array.from(inputCheckboxes).every((checkbox) => checkbox.checked);
+                    if (allChecked) {
+                        checkAllCheckbox.checked = true;
+                    }
+                }
+            });
+        });
+
+
+        // 필수체크박스
+        const essentialCheckboxes = document.querySelectorAll('.essential-check');
+        const checkBtn = document.querySelector('.check-btn');
+
+
+        function checkAllEssentialCheckboxes() {
+            const allChecked = Array.from(essentialCheckboxes).every((checkbox) => checkbox.checked);
+            checkBtn.disabled = !allChecked;
+        }
+
+        essentialCheckboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', checkAllEssentialCheckboxes);
+        });
+
+        checkAllEssentialCheckboxes();
+    }
+
+
+    // 셀렉트
+    const selectBoxElements = document.querySelectorAll(".select");
+
+    function toggleSelectBox(selectBox) {
+        selectBox.classList.toggle("active");
+
+    }
+
+    function selectOption(optionElement) {
+        const selectBox = optionElement.closest(".select");
+        const selectedElement = selectBox.querySelector(".selected-value");
+        const etc = document.querySelector('.etc-input-box')
+        selectedElement.textContent = optionElement.textContent;
+        if(selectedElement.textContent === '기타'){
+            etc.classList.add('active')
+        }else{
+            etc.classList.remove('active')
+        }
+        if(selectBox.classList.contains('blank-input')){
+            selectBox.classList.remove('blank-input')
+        }
+    }
+
+    selectBoxElements.forEach(selectBoxElement => {
+        selectBoxElement.addEventListener("click", function (e) {
+            const targetElement = e.target;
+            const isOptionElement = targetElement.classList.contains("option");
+
+            if (isOptionElement) {
+                selectOption(targetElement);
+            }
+
+            toggleSelectBox(selectBoxElement);
+        });
+    });
+
+    document.addEventListener("click", function (e) {
+        const targetElement = e.target;
+        const isSelect = targetElement.classList.contains("select") || targetElement.closest(".select");
+
+        if (isSelect) {
+            return;
+        }
+
+        const allSelectBoxElements = document.querySelectorAll(".select");
+
+        allSelectBoxElements.forEach(boxElement => {
+            boxElement.classList.remove("active");
+        });
+    });
+
+    const popup = document.querySelector('.popup-login');
+    const popupBg = document.querySelector('.popup-bg');
+    const tabBtn = document.querySelectorAll('.popup-content-header-tab-btn');
+    const searchBox = document.querySelectorAll('.search-box');
+    const popupForm = document.querySelectorAll('.popup-form');
+    const popupSub = document.querySelectorAll('.popup-fail-search');
+    // console.log(popupForm)
+    function popupOpen(index){
+        popup.classList.add('active')
+        popupBg.classList.add('active')
+
+        tabBtn.forEach(tab => {
+            tab.classList.remove('active')
+        });
+        tabBtn[index - 1].classList.add('active')
+
+        searchBox.forEach(box => {
+            box.classList.remove('active')
+        });
+
+        searchBox[index - 1].classList.add('active')
+    }
+
+    function popupClose(){
+        popup.classList.remove('active')
+        popupBg.classList.remove('active')
+    }
+
+    // 찾기 탭
+    tabBtn.forEach((tab, i) => {
+        tab.addEventListener('click',()=>{
+            tabBtn.forEach(active => {
+                active.classList.remove('active')
+            });
+            tab.classList.add('active')
+
+            searchBox.forEach(box => {
+                box.classList.remove('active')
+            });
+            searchBox[i].classList.add('active')
+
+            // 탭버튼시 처음폼으로 초기화
+            popupForm.forEach(form => {
+                form.classList.remove('active')
+            });
+
+            popupForm[0].classList.add('active')
+            popupForm[2].classList.add('active')
+        })
+    });
+
+    // 아이디찾기
+    function idSearch() {
+        const nameInput = document.getElementById("name-id");
+        const emailInput = document.getElementById("email-id");
+        const name = nameInput.value;
+        const email = emailInput.value;
+
+        // 유효성 검사
+        if (name === "" || name !== 'asd' ) {
+            popup.classList.remove('active');
+            popupSub[0].classList.add('active');
+        } else if (email === "" || !isValidEmail(email)) {
+            popup.classList.remove('active');
+            popupSub[0].classList.add('active');
+        } else {
+            popupForm[1].classList.add('active')
+            popupForm[0].classList.remove('active')
+        }
+    }
+
+    // 비밀번호 찾기
+    function pwSearch() {
+        const nameInput = document.getElementById("name-pw");
+        const emailInput = document.getElementById("email-pw");
+        const name = nameInput.value;
+        const email = emailInput.value;
+
+        // 유효성 검사
+        if (name === "" || name !== 'asd' ) {
+            popup.classList.remove('active');
+            popupSub[0].classList.add('active');
+        } else if (email === "" || !isValidEmail(email)) {
+            popup.classList.remove('active');
+            popupSub[0].classList.add('active');
+        } else {
+            popupForm[3].classList.add('active')
+            popupForm[2].classList.remove('active')
+        }
+    }
+    // 비밀번호 변경
+    function pwChange(){
+        const newPw = document.getElementById("new-pw");
+        const newRePw = document.getElementById("new-re-pw");
+        if(newPw.value === newRePw.value){
+            popupSub[1].classList.add('active')
+            popup.classList.remove('active');
+        }else{
+            popup.classList.remove('active');
+            popupSub[0].classList.add('active');
+        }
+    }
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function backBtn(index){
+        popupForm.forEach(back => {
+            back.classList.remove('active')
+        });
+        popupForm[index].classList.add('active')
+    }
+
+    function failCheck(){
+        popup.classList.add('active')
+        popupSub.forEach(fail => {
+            fail.classList.remove('active')
+        });
+    }
+    function clearCheck(){
+        popup.classList.remove('active')
+        popupSub.forEach(fail => {
+            fail.classList.remove('active')
+        });
+        popupBg.classList.remove('active')
+    }
+
+    // 약관 팝업
+    const consentPop = document.querySelectorAll('.consent-popup')
+
+    function  consentPopupOpen(index){
+        popupBg.classList.add('active');
+        consentPop[index].classList.add('active')
+    }
+
+    function consentPopupClose(){
+        popupBg.classList.remove('active')
+        consentPop.forEach(pop => {
+            pop.classList.remove('active')
+        });
+    }
+
+    // 약관 폼 넘어가기
+    function nextTermsForm(index){
+        const termsForm = document.querySelectorAll('.terms-form');
+        termsForm.forEach(form => {
+            form.classList.remove('active')
+        });
+        termsForm[index].classList.add('active');
+    }
+
+    // 회원가입 폼
+    function validateForm() {
+        const signFormInput = document.querySelectorAll('.terms-form.second .input:not(.etc-input)')
+        const id = document.querySelector('.id-input');
+        const password = document.querySelector('.pw-input');
+        const confirmPassword = document.querySelector('.re-pw-input');
+
+        let isValid = true;
+        let foundEmptyInput = false;
+
+        const signCoplete = () =>{
+            if(isValid) nextTermsForm(2)
+        }
+
+        signFormInput.forEach(input => {
+            if (input.value === ""  &&  !foundEmptyInput   ) {
+                input.parentElement.classList.add('blank-input');
+                input.scrollIntoView({ behavior: "smooth" });
+                isValid = false;
+                foundEmptyInput = true;
+            }else if(!foundEmptyInput){
+                if(input.innerText === '선택'){
+                    input.parentElement.parentElement.classList.add('blank-input');
+                    input.scrollIntoView({ behavior: "smooth" });
+                    isValid = false;
+                    foundEmptyInput = true;
+                }
+            }
+        });
+        // if (id.value === '') {
+        //     id.parentElement.classList.add('error-input')
+        //     isValid = false;
+        // }
+
+        // if (password === '') {
+        //     password.parentElement.classList.add('error-input')
+        //     isValid = false;
+        // } else if (password.length < 8 || password.length > 30) {
+        //     password.parentElement.classList.add('error-input')
+        //     isValid = false;
+        // }
+
+        // if (confirmPassword === '') {
+        //     confirmPassword.parentElement.classList.add('error-input')
+        //     isValid = false;
+        // } else if (confirmPassword !== password) {
+        //     confirmPassword.parentElement.classList.add('error-input')
+        //     isValid = false;
+        // }
+
+        // If all checks pass, the form is valid
+        return signCoplete();
+    }
+
+
+    // 필수입력항목 입력시 없애기
+    const signFormInput = document.querySelectorAll('.terms-form.second input')
+    signFormInput.forEach(form => {
+        form.addEventListener('click',()=>{
+            if(form.parentElement.classList.contains('blank-input')){
+                form.parentElement.classList.remove('blank-input')
+            }
+        });
+    })
+
+    //메일 인증번호
+    function emailPopToggle(){
+        const emailPop = document.querySelector('.email-popup')
+        emailPop.classList.toggle('active')
+        popupBg.classList.toggle('active')
+    }
+</script>

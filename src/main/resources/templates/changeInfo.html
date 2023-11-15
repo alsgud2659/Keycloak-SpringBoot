@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="bizbeeOffice">
+    <!-- <meta property="og:url" content="https://스마트비즈.com"> -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../assets/og-img.png">
+    <meta property="og:description" content="기업경영 솔루션 개발.  IT솔루션, 경영컨설팅, 사이트구축/운영, 시스템유지보수">
+    <link rel="shortcut icon" href="../assets/favicon.ico">
+    <title>bizbee Office</title>
+    <link rel="stylesheet" href="../style/css/link.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class='all-in-one-wrap'>
+        <header class="header">
+            <div class="logo">
+                <img src="/assets/images/bizbee-office-logo.png" alt="로고">
+            </div>
+            <div class="header-right">
+                <div class="user-profile user-profile-btn" onclick="profileToggle()" >
+                    <span class="user-img">
+                        <img src="/assets/icon/profile.svg" alt="프로필" class="user-default-img">
+                    </span>
+                    <span >
+                        <span class="user-name">김현희</span>님
+                    </span>
+                    <div class="user-profile-detail ">
+                        <div class="user-profile-detail-header">
+                            <span class="user-img">
+                                <img src="/assets/icon/profile.svg" alt="프로필" class="user-default-img">
+                            </span>
+                            <span class="user-name">김현희님</span>
+                        </div>
+                        <div class="user-profile-detail-body">
+                            <ul class="user-profile-detail-body-ul">
+                                <li class="user-profile-detail-body-li">
+                                    <span class="user-profile-detail-body-title">
+                                        <img src="./assets/icon/user-profile-detail-1.svg" alt="등급">
+                                        회원등급
+                                    </span>
+                                    <span class="user-profile-detail-body-text c-y">
+                                        통합회원
+                                    </span>
+                                </li>
+                                <li class="user-profile-detail-body-li">
+                                    <span class="user-profile-detail-body-title">
+                                        <img src="./assets/icon/user-profile-detail-2.svg" alt="등급">
+                                        회사명
+                                    </span>
+                                    <span class="user-profile-detail-body-text bold">
+                                        주식회사 비즈비
+                                    </span>
+                                </li>
+                                <li class="user-profile-detail-body-li">
+                                    <span class="user-profile-detail-body-title">
+                                        <img src="./assets/icon/user-profile-detail-3.svg" alt="등급">
+                                        이메일
+                                    </span>
+                                    <span class="user-profile-detail-body-text">
+                                        jaeyoung@bizbee.co.kr
+                                    </span>
+                                </li>
+                                <li class="user-profile-detail-body-li">
+                                    <span class="user-profile-detail-body-title">
+                                        <img src="./assets/icon/user-profile-detail-4.svg" alt="등급">
+                                        휴대폰번호
+                                    </span>
+                                    <span class="user-profile-detail-body-text">
+                                        010-1234-5678
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-box">
+                            <button class="btn yel">정보 수정</button>
+                            <button class="btn w">로그아웃</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="select select-company">
+                    <div class="selected ">
+                        <div class="selected-value input">회사 선택</div>
+                        <img src="/assets/icon/select.svg" alt="arrow" class="arrow">
+                    </div>
+                    <ul class="sidebar-ul">
+                        <li class="sidebar-li active">
+                            <a href="../index.html">
+                                <img src="../assets/icon/home-li.svg" alt="홈">
+                            </a>
+                        </li>
+                        <li class="sidebar-li">
+                            <a href="../page/qna.html">
+                                <img src="../assets/icon/qna-li.svg" alt="자주하는질문">
+                            </a>
+                        </li>
+                        <li class="sidebar-li">
+                            <a href="../page/oneOnOne.html">
+                                <img src="../assets/icon/per-qna-li.svg" alt="1:1 문의">
+                            </a>
+                        </li>
+                        <li class="sidebar-li">
+                            <a href="../page/notice.html">
+                                <img src="../assets/icon/notice-li.svg" alt="공지사항">
+                            </a>
+                        </li>
+                        <li class="sidebar-li">
+                            <a href="../page/programIntro.html">
+                                <img src="../assets/icon/intro.svg" alt="제품소개">
+                            </a>
+                        </li>
+                    </ul>
+                  </div>
+                <button class="btn w">로그아웃</button>
+            </div>
+        </header>
+        <div class="sidebar">
+            <ul class="sidebar-ul">
+                <a href="../index.html" class="sidebar-li active">
+                    <img src="/assets/icon/home-li.svg" alt="홈">
+                </a>
+                <a href='../page/qna.html ' class="sidebar-li">
+                    <img src="/assets/icon/qna-li.svg" alt="자주하는질문">
+                </a>
+                <a href="../page/oneOnOne.html" class="sidebar-li">
+                    <img src="/assets/icon/per-qna-li.svg" alt="1:1 문의">
+                </a>
+                <a href="../page/notice.html" class="sidebar-li">
+                    <img src="/assets/icon/notice-li.svg" alt="공지사항">
+                </a>
+                <a href="../page/programIntro.html" class="sidebar-li">
+                    <img src="/assets/icon/intro.svg" alt="제품소개">
+                </a>
+            </ul>
+        </div>
+            <div class="contents mobile-full">
+                <div class="program-contents-back-header active">
+                    <button class="pop-back-btn" onclick="window.history.back();">
+                        <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                    </button>
+                    <span class="pop-back-title">
+                        정보 수정
+                    </span>
+                </div>
+                <span class="contents-title pc-only">
+                    정보 수정
+                </span>
+                <div class="contents-box w ">
+                    <div class="contents-profile">
+                        <span class="user-img-box">
+                            <span class="user-img">
+                                <img src="../assets/icon/profile.svg" alt="프로필" class="user-default-img">
+                                <button class="img-pick-btn">
+                                    <img src="../assets/icon/camera.svg" alt="이미지변경">
+                                </button>
+                            </span>
+                        </span>
+                        <div class="contents-profile-right">
+                            <span class="user-name">김현희님</span>
+                            <span class="user-membership">통합회원</span>
+                        </div>
+                    </div>
+                    <div class="contents-form">
+                        <div class="contents-form-row">
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    아이디
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    이름
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents-form-row">
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                     비밀번호
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text" readonly>
+                                    <button class="contents-form-input-btn" onclick="popChangeOpen(0)">변경</button>
+                                </div>
+                            </div>
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    휴대폰번호
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents-form-row">
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    이메일
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text" readonly>
+                                    <button class="contents-form-input-btn" onclick="popChangeOpen(1)">변경</button>
+                                </div>
+                            </div>
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    생년월일
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents-form-row">
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    성별
+                                </span>
+                                <div class="contents-form-radio">
+                                    <label class="input-check-box">
+                                        <input type="radio" checked name="gender">
+                                        <span class="custom-radio"></span>
+                                        남자
+                                    </label>
+                                    <label class="input-check-box">
+                                        <input type="radio" name="gender">
+                                        <span class="custom-radio"></span>
+                                        여자
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    유입구분
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents-form-row">
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    상태
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="contents-form-input-box">
+                                <span class="contents-form-input-title">
+                                    가입일자
+                                </span>
+                                <div class="contents-form-input">
+                                    <input type="text" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contents-form-btn-box change-info-btn-box">
+                        <button class="btn w middle max-w cancel-btn">
+                            취소
+                        </button>
+                        <button class="btn yel middle max-w">
+                            저장
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-container">
+                <div class="popup-bg"></div>
+                <div class="popup-change pw-change">
+                    <div class="program-contents-back-header active">
+                        <button class="pop-back-btn" onclick="popChangeClose()">
+                            <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                        </button>
+                        <span class="pop-back-title">
+                            비밀번호 변경
+                        </span>
+                    </div>
+                    <div class="popup-header">
+                        <span class="popup-header-title">
+                            비밀번호 변경
+                        </span>
+                        <button class="popup-header-close" onclick="popChangeClose()">
+                            <img src="../assets/icon/close-x.svg" alt="닫기">
+                        </button>
+                    </div>
+                    <div class="popup-body">
+                        <div class="contents-form">
+                            <div class="contents-form-row">
+                                <div class="contents-form-input-box">
+                                    <span class="contents-form-input-title">
+                                        새 비밀번호
+                                    </span>
+                                    <div class="contents-form-input">
+                                        <input type="password" placeholder="새 비밀번호를 입력해 주세요" class="password-input">
+                                        <button class="pw-btn" >
+                                            <img src="../assets/icon/pwShow.svg" alt="비밀번호 보기">
+                                            <img src="../assets/icon/pwHide.svg" alt="비밀번호 숨기기">
+                                        </button>
+                                    </div>
+                                    <span class="tip">8~30자리 영문 대/소문자, 숫자 및 특수문자 조합</span>
+                                </div>
+                            </div>
+                            <div class="contents-form-row">
+                                <div class="contents-form-input-box">
+                                    <span class="contents-form-input-title">
+                                        새 비밀번호
+                                    </span>
+                                    <div class="contents-form-input">
+                                        <input type="password" placeholder="새 비밀번호를 한 번 더 입력해 주세요" class="password-input">
+                                        <button class="pw-btn">
+                                            <img src="../assets/icon/pwShow.svg" alt="비밀번호 보기">
+                                            <img src="../assets/icon/pwHide.svg" alt="비밀번호 숨기기">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-btn-box">
+                            <button class="middle yel btn" disabled>저장</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-change email-change">
+                    <div class="program-contents-back-header active">
+                        <button class="pop-back-btn" onclick="popChangeClose()">
+                            <img src="../assets/icon/popup-back.svg" alt="뒤로가기">
+                        </button>
+                        <span class="pop-back-title">
+                            이메일 변경
+                        </span>
+                    </div>
+                    <div class="popup-header">
+                        <span class="popup-header-title">
+                            이메일 변경
+                        </span>
+                        <button class="popup-header-close" onclick="popChangeClose()">
+                            <img src="../assets/icon/close-x.svg" alt="닫기">
+                        </button>
+                    </div>
+                    <div class="popup-body">
+                        <div class="contents-form">
+                            <div class="contents-form-row">
+                                <div class="contents-form-input-box">
+                                    <span class="contents-form-input-title">
+                                        이메일
+                                    </span>
+                                    <div class="contents-form-input">
+                                        <input type="text" placeholder="변경할 이메일을 입력해 주세요">
+                                        <button class="contents-form-input-btn">인증번호 받기</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="contents-form-row">
+                                <div class="contents-form-input-box">
+                                    <span class="contents-form-input-title">
+                                        인증번호 확인
+                                        <span class="title-tip">
+                                            인증번호는 메일 수신 후 10분간 유효합니다.
+                                        </span>
+                                    </span>
+                                    <div class="contents-form-input add-time">
+                                        <div class="contents-form-input-time-box">
+                                            <input type="text" placeholder="이메일 인증번호를 입력해 주세요">
+                                            <span class="input-time">
+                                                9:59
+                                            </span>
+                                        </div>
+                                        <button class="contents-form-input-btn">인증하기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-btn-box">
+                            <button class="middle yel btn" disabled>저장</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
+<script src="../script/main.js"></script>
+<script src="../script/sub.js"></script>

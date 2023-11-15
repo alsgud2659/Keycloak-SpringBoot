@@ -1,0 +1,318 @@
+.terms-form {
+  padding: 0 20px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 150px;
+}
+.terms-form.second .terms-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 50px;
+}
+@media (max-width: 768px) {
+  .terms-form.second .terms-input-box {
+    gap: 24px;
+  }
+}
+.terms-form.second .terms-form-title {
+  padding-bottom: 20px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid #E4E8EE;
+}
+@media (max-width: 768px) {
+  .terms-form.second .terms-form-title {
+    padding-bottom: 12px;
+  }
+}
+.terms-form.second .terms-form-title:nth-child(3) {
+  margin-top: 60px;
+}
+@media (max-width: 768px) {
+  .terms-form.second .terms-form-title:nth-child(3) {
+    margin-top: 40px;
+  }
+}
+.terms-form.second .terms-input-box {
+  margin-top: 50px;
+}
+.terms-form.second .terms-input-box:nth-child(4) {
+  margin-bottom: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid #E4E8EE;
+}
+@media (max-width: 768px) {
+  .terms-form.second .terms-input-box:nth-child(4) {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+  }
+}
+.terms-form.active {
+  display: flex;
+}
+.terms-form-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .terms-form-title {
+    font-size: 1.25rem;
+  }
+}
+.terms-form-title .tip {
+  font-size: 1.125rem;
+}
+@media (max-width: 768px) {
+  .terms-form-title .tip {
+    font-size: 0.875rem;
+  }
+}
+.terms-input-row {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  box-sizing: content-box;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.terms-input-row.first {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E4E8EE;
+}
+.terms-input-row.last {
+  padding-bottom: 26px;
+  border-bottom: 1px solid #E4E8EE;
+  margin-bottom: 60px;
+}
+.terms-input-col {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+.terms-input-col-title {
+  font-size: 1.125rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .terms-input-col-title {
+    font-size: 0.875rem;
+  }
+}
+.terms-input-col-title > span:nth-child(2) {
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .terms-input-col-title > span:nth-child(2) {
+    font-size: 0.75rem;
+    color: #8D99A8;
+  }
+}
+.terms-input-col-box {
+  display: flex;
+  position: relative;
+  gap: 10px;
+  align-items: center;
+}
+.terms-input-col-box input {
+  flex: 1;
+  width: 100%;
+}
+.terms-input-col-box.max-input input {
+  max-width: 180px;
+  letter-spacing: 8;
+}
+@media (max-width: 768px) {
+  .terms-input-col-box.max-input input {
+    letter-spacing: 7;
+    max-width: 140px;
+  }
+}
+.terms-input-col-box.max-input > span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .terms-input-col-box.max-input > span {
+    gap: 6px;
+  }
+}
+.terms-input-col-box.max-input > span input {
+  max-width: 58px;
+}
+@media (max-width: 768px) {
+  .terms-input-col-box.max-input > span input {
+    max-width: 42px;
+  }
+}
+.terms-input-col-box.row {
+  flex-direction: column;
+}
+.terms-input-col-box.row input {
+  line-height: 60px;
+}
+@media (max-width: 768px) {
+  .terms-input-col-box.row input {
+    line-height: 48px;
+  }
+}
+.terms-btn {
+  height: 30px;
+  border-radius: 16px;
+  padding: 0 12px;
+  background-color: #EEF1F6;
+  font-size: 1rem;
+}
+
+.consent-popup {
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 800px;
+  max-height: calc(100vh - 100px);
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .consent-popup {
+    max-height: 100vh;
+  }
+}
+.consent-popup.active {
+  display: flex;
+}
+.consent-popup-header {
+  background-color: #FFD230;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+@media (max-width: 768px) {
+  .consent-popup-header {
+    padding: 0 20px;
+    min-height: 60px;
+  }
+}
+.consent-popup-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .consent-popup-title {
+    font-size: 1.125rem;
+  }
+}
+.consent-popup-body {
+  padding: 30px 30px 60px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+}
+@media (max-width: 768px) {
+  .consent-popup-body {
+    padding: 20px 20px 30px;
+  }
+}
+.consent-popup-body-title {
+  font-size: 2.125rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .consent-popup-body-title {
+    font-size: 1.5rem;
+    margin-bottom: 28px;
+  }
+}
+.consent-popup-body-content {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .consent-popup-body-content {
+    margin-bottom: 24px;
+  }
+}
+.consent-popup-body-content::-webkit-scrollbar {
+  width: 10px;
+}
+.consent-popup-body-content::-webkit-scrollbar-thumb {
+  height: 100px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.consent-popup-body-content-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .consent-popup-body-content-title {
+    font-size: 1.25rem;
+    margin-bottom: 28px;
+  }
+}
+.consent-popup-body-content-sub-title {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .consent-popup-body-content-sub-title {
+    font-size: 1rem;
+  }
+}
+.consent-popup-body-content-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .consent-popup-body-content-text {
+    font-size: 0.9375rem;
+  }
+}
+.consent-popup-body-content-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.email-popup > span {
+  text-align: center;
+}
+
+.sign-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0 80px;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+@media (max-width: 768px) {
+  .sign-complete {
+    font-size: 1rem;
+    margin: 4px 0 32px;
+  }
+  .sign-complete img {
+    max-width: 60px;
+  }
+}

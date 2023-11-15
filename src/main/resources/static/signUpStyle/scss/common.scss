@@ -1,0 +1,395 @@
+@import './mixin.scss';
+.max-container{
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+// 버튼모음
+.btn{
+    height: 60px;
+    line-height: 60px;
+    padding: 0 8px;
+    border-radius: 4px ;
+    display: flex;
+    gap: 4px; 
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 24px;
+    &.full{
+        width: 100%;
+        padding: 0 8px;
+    }
+    &.w{
+        background-color: $w ;
+        border: 1px solid #000;
+        &:hover{
+            background-color:  $mc;
+            border-color: transparent;
+        }
+    }
+    &.yel{
+         background-color: $mc;
+         &:hover{
+            background-color: #FEC84B;
+         }
+    }
+    &.g{
+        padding: 0 30px;
+        background-color: #EEF1F6;
+        &:hover{
+            background-color: #E4E8EE;
+        }
+    }
+    &.m-145{
+        max-width: 145px ;
+    }
+    &.m-500{
+        margin: 0 auto;
+        max-width: 500px ;
+        width: 100%;
+    }
+    &:disabled{
+        background-color: #EEF1F6;
+        color: #CDD3DD;
+        cursor: default;
+        &:hover{
+            background-color: #EEF1F6;
+            color: #CDD3DD;
+        }
+    }
+    @include mobile{
+        font-size: px(14);
+        height: 48px;
+        line-height: 48px;
+        padding: 0 8px;
+    }
+    a{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        gap: 4px; 
+        align-items: center;
+        justify-content: center;
+    }
+}
+.search-btn{
+    color: #8D99A8;
+    font-weight: 500;
+    font-size: px(16);
+    &:hover{
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+    @include mobile{
+        font-size: px(13);
+    }
+}
+//인풋
+
+input:not([type='checkbox'],[type='radio']){
+    height: 60px;
+    padding: 0 20px;
+    border-radius: 4px;
+    outline: none;
+    background-color: $w;
+    border: 1px solid #CDD3DD;
+    font-size: px(18);
+    &::placeholder{
+        color: #8d99a8;
+        line-height: 1;
+    }
+    &:hover{
+        border: 1px solid #000;
+    }
+    &.error{
+        border-color: #F04438;
+    }
+    @include mobile{
+        height: 48px;
+        font-size: px(14);
+        padding: 0 14px;
+    }
+}
+
+
+// 라디오버튼 커스텀
+label{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @include mobile{
+        font-size: px(13);
+    }
+}
+
+    input{
+        &[type="radio"]{
+            position:absolute;
+            top:0;
+            left:0;
+            visibility:hidden;
+            }
+        }
+    .custom-radio {
+        display:inline-block;
+        vertical-align:top;
+        width:20px;
+        height:20px;
+        background:#fff;
+        border:1px solid #CDD3DD;
+        position:relative;
+        border-radius: 50%;
+        transition:border .6s ease;
+        &::after{
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: #cdd3dd;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            transition:all .6s;
+            @include mobile{
+                width:8px;
+                height:8px;
+            }
+        }
+        @include mobile{
+            width:16px;
+            height:16px;
+        }
+      }
+    
+      input[type="radio"]:checked + .custom-radio {
+        border: 1px solid #FFD230;
+        &::after{
+            background-color: #ffd230;
+        }
+    }
+
+    // 체크박스 커스텀
+// 체크박스 인풋은 숨김처리
+.checkbox input {
+    display: none;
+  }
+  
+  // 체크박스 테두리
+  .checkbox_icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid #CDD3DD;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  // 체크박스 가상요소
+  .checkbox_icon::before{
+    content: ''; // 가상요소 필수값
+    width: 100%;
+    height: 100%;
+    background-image: url(../../assets/icon/checkbox.svg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: none;
+  }
+  
+  
+  // 체크되었을 때 테투리 설정
+  .checkbox input:checked + .checkbox_icon {
+        border-color: #FFD230;
+        &::before{
+            display: block;
+        }
+  }
+
+  
+// 셀렉트박스
+  
+  .select {
+    display: flex;
+    width: 100%;
+    border: 1px solid #E4E8EE;
+    border-radius: 4px;
+    position: relative;
+    &:hover{
+        border-color: #000 ;
+    }
+    &.active{
+        border-color: #FFD230;
+        box-shadow: 0px 0px 0px 3px #FEEFC7;
+    }
+    @include mobile{
+        font-size: px(14);
+    }
+}
+  
+  .select .selected {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px;
+    @include mobile{
+        height: 48px;
+        padding: 0 14px;
+    }
+  }
+  
+  .select .selected .selected-value {
+    max-width: 90px;
+  }
+  
+  
+  .select ul li,
+  .select .selected .selected-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .select ul {
+    display: none;
+    width: 100%;
+    padding: 8px 0;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+    position: absolute;
+    top: calc(100% + 10PX);
+    background-color: #FFF;
+    z-index: 1;
+    border-radius: 4px;
+    max-height: 316px;
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        width: 6px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: #cdd3dd;
+        border-radius: 3px;
+    }
+}
+  
+  .select.active ul {
+    display: block;
+  }
+  
+  .select ul li {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    @include mobile{
+        height: 48px;
+        padding: 0 14px;
+    }
+  }
+  
+  .select ul li:hover {
+    background: #EEF1F6;
+  }
+  
+//   컬러
+.c-r{
+    color: #F04438;
+}
+
+
+
+
+.blank-input{
+    position: relative;
+    margin-bottom: 21px;
+    &::after{
+        content: '필수 입력 항목입니다.' !important;
+        position: absolute;
+        left: 0;
+        top: calc(100% );
+        content: '';
+        display: block;
+        color: #F04438;
+        margin-top: 12px;
+        margin-left: 2px;
+        font-size: px(18);
+        @include mobile{
+            font-size: px(14);
+        }
+    }
+    input{
+        border-color: #f04438;
+    }
+}
+.error-input{
+    position: relative;
+    margin-bottom: 21px;
+    &::after{
+        position: absolute;
+        left: 0;
+        top: calc(100% );
+        content: '';
+        display: block;
+        color: #F04438;
+        margin-top: 12px;
+        margin-left: 2px;
+        font-size: px(18);
+        @include mobile{
+            font-size: px(14);
+        }
+    }
+    input{
+        border-color: #f04438;
+    }
+}
+.gender-input-box{
+    margin-bottom: 0;
+    position: static;
+}
+.etc-input-box{
+    width: 100%;
+    display: none;
+    &.active{
+        display: block;
+    }
+}
+// 에러모음
+.id-error{
+    &::after{
+        content: "유효하지 않은 아이디 입니다.";
+        display: none;
+    }
+}
+.pw-error{
+    &::after{
+        content: "유효하지 않은 비밀번호 입니다.";
+        display: none;
+    }
+}
+.use-id-error{
+    &::after{
+        content: '사용중인 아이디입니다. ';
+        display: none;
+    }
+}
+.form-pw-error{
+    &::after{
+        content: '8~30자리 영문 대/소문자, 숫자, 특수문자를 조합해서 입력해 주세요.';
+        display: none;
+    }
+}
+.re-pw-error{
+    &::after{
+        content: "비밀번호가 일치하지 않습니다.";
+        display: none;
+    }
+} 
+.certification--error{
+    &::after{
+        display: none;
+        content: "인증번호가 일치하지 않습니다.";
+    }
+}
