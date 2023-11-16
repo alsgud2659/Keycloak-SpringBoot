@@ -1,6 +1,7 @@
 package com.example.keycloak.controller;
 
 import com.example.keycloak.manager.TokenManager;
+import com.example.keycloak.model.JoinVo;
 import com.example.keycloak.model.UserInfoVo;
 import com.example.keycloak.service.AdminClientService;
 import com.example.keycloak.service.OfficeService;
@@ -11,26 +12,23 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
 public class OfficeController {
-    private final OfficeService service;
-    private final AdminClientService aService;
-
-    private final TokenManager tokenManager;
+    private final AdminClientService service;
 
     @GetMapping(path ="/")
     public String index() {
         return "BeforeLogin";
     }
 
-    @GetMapping("signUp")
+    @GetMapping("/signUp")
     public String getSignIn() {
         return "SignUp";
     }
-
 
     @GetMapping("/home")
     public String getOffice() {
@@ -71,8 +69,18 @@ public class OfficeController {
         result.setName(authentication.getAccount().getKeycloakSecurityContext().getIdToken().getName());
         result.setEmail(authentication.getAccount().getKeycloakSecurityContext().getIdToken().getEmail());
 
-//        aService.applyUser();
         return result;
+    }
+
+    @PostMapping("/join")
+    @ResponseBody
+    public int join(@RequestBody JoinVo joinInfo) {
+        try {
+            service.applyUser(joinInfo);
+        }catch (Exception e) {
+            return 0;
+        }
+        return 1;
     }
 
 }

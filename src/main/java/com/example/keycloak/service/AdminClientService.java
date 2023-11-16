@@ -2,6 +2,7 @@ package com.example.keycloak.service;
 
 import com.example.keycloak.config.KeycloakConfiguration;
 import com.example.keycloak.manager.TokenManager;
+import com.example.keycloak.model.JoinVo;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,25 +46,24 @@ public class AdminClientService {
                 .map(user -> user.getUsername())
                 .collect(Collectors.toList()));
     }
-    public void applyUser() {
+    public void applyUser(JoinVo joinInfo) {
         UserRepresentation user = new UserRepresentation();
 
         // 비밀번호
         CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
         credentialRepresentation.setTemporary(false);
         credentialRepresentation.setType(CredentialRepresentation.PASSWORD);
-        credentialRepresentation.setValue("1234");
+        credentialRepresentation.setValue(joinInfo.getPassTxt());
 
         // 아이디, 이름, 이메일 정보
         user.setEnabled(true);
-        user.setUsername("alsgud134");
-        user.setFirstName("MinHyung");
-        user.setLastName("Lee");
-        user.setEmail("alsgud124@naver.com");
+        user.setUsername(joinInfo.getMemberId());
+        user.setFirstName(joinInfo.getMemberNm());
+        user.setEmail(joinInfo.getEmailId());
         user.setEmailVerified(true);
         user.setCredentials(Collections.singletonList(credentialRepresentation));
 
-        String url = "http://172.30.72.236:8080/admin/realms/my-realm/users";
+        String url = "http://172.26.176.51:8080/admin/realms/my-realm/users";
         RestTemplate rt = new RestTemplate();
 
         try {
@@ -77,7 +77,6 @@ public class AdminClientService {
 
         }catch (HttpClientErrorException e) {
             System.out.println("토큰 재발급");
-//            keycloak.tokenManager().refreshToken();
             tokenManager.getAccessToken();
         }
 

@@ -26,8 +26,8 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
         http    
                 .authorizeRequests()
                 .antMatchers("/signUp").permitAll()
-                .antMatchers("/style/**", "/assets/**", "/indexAssets/**", "/indexStyle/**","/indexScript/**", "/signUpStyle/**").permitAll()
-                .antMatchers("/test/all").permitAll()
+                .antMatchers("/style/**", "/assets/**", "/indexAssets/**", "/indexStyle/**","/indexScript/**", "/signUpStyle/**", "/script/**", "/signUpMain.js").permitAll()
+                .antMatchers("/join").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("http://172.30.72.236:8080/realms/my-realm/protocol/openid-connect/auth")

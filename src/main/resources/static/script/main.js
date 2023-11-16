@@ -74,7 +74,7 @@ function profileToggle(){
   const popHeader =  document.querySelector('.program-contents-back-header');
   profileBtn.classList.toggle('active')
   popHeader.classList.toggle('active')
-  e.stopPropagation();
+  // e.stopPropagation();
 }
 
 // 메인 회사 등록

@@ -1,113 +1,109 @@
-    // 모든 약관에 동의 체크박스
-    const checkAllCheckbox = document.querySelector('.terms-input-box .all-check');
-    // 하위 체크박스들
-    const inputCheckboxes = document.querySelectorAll('.terms-input-box input[type="checkbox"]:not(.all-check)');
+// 모든 약관에 동의 체크박스
+const checkAllCheckbox = document.querySelector('.terms-input-box .all-check');
+// 하위 체크박스들
+const inputCheckboxes = document.querySelectorAll('.terms-input-box input[type="checkbox"]:not(.all-check)');
 
-        
-
-
-    if(checkAllCheckbox !== null){
-        // 모든 약관에 동의 체크박스의 상태에 따라 하위 체크박스들을 변경
-        checkAllCheckbox.addEventListener('change', function() {
-            inputCheckboxes.forEach((check) => {
-                check.checked = checkAllCheckbox.checked;
-            });
-            checkAllEssentialCheckboxes();
-        });
-        
-        // 하위 체크박스 중 하나라도 해제될 때 모든 약관에 동의 체크박스 해제
-        checkAllCheckbox.addEventListener('change', function() {
-            inputCheckboxes.forEach((check) => {
-                check.checked = checkAllCheckbox.checked;
-            });
-            checkAllEssentialCheckboxes();
-        });
-        
-        // 하위 체크박스 중 하나라도 해제될 때 모든 약관에 동의 체크박스 해제
+if(checkAllCheckbox !== null){
+    // 모든 약관에 동의 체크박스의 상태에 따라 하위 체크박스들을 변경
+    checkAllCheckbox.addEventListener('change', function() {
         inputCheckboxes.forEach((check) => {
-            check.addEventListener('change', function() {
-                if (!check.checked) {
-                    checkAllCheckbox.checked = false;
-                } else {
-                    // 모든 하위 체크박스가 체크되었는지 확인
-                    const allChecked = Array.from(inputCheckboxes).every((checkbox) => checkbox.checked);
-                    if (allChecked) {
-                        checkAllCheckbox.checked = true;
-                    }
-                }
-            });
+            check.checked = checkAllCheckbox.checked;
         });
-        
-
-        // 필수체크박스
-        const essentialCheckboxes = document.querySelectorAll('.essential-check');
-        const checkBtn = document.querySelector('.check-btn');
-
-
-        function checkAllEssentialCheckboxes() {
-            const allChecked = Array.from(essentialCheckboxes).every((checkbox) => checkbox.checked);
-            checkBtn.disabled = !allChecked;
-        }
-
-        essentialCheckboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', checkAllEssentialCheckboxes);
-        });
-
         checkAllEssentialCheckboxes();
+    });
+
+    // 하위 체크박스 중 하나라도 해제될 때 모든 약관에 동의 체크박스 해제
+    checkAllCheckbox.addEventListener('change', function() {
+        inputCheckboxes.forEach((check) => {
+            check.checked = checkAllCheckbox.checked;
+        });
+        checkAllEssentialCheckboxes();
+    });
+
+    // 하위 체크박스 중 하나라도 해제될 때 모든 약관에 동의 체크박스 해제
+    inputCheckboxes.forEach((check) => {
+        check.addEventListener('change', function() {
+            if (!check.checked) {
+                checkAllCheckbox.checked = false;
+            } else {
+                // 모든 하위 체크박스가 체크되었는지 확인
+                const allChecked = Array.from(inputCheckboxes).every((checkbox) => checkbox.checked);
+                if (allChecked) {
+                    checkAllCheckbox.checked = true;
+                }
+            }
+        });
+    });
+
+
+    // 필수체크박스
+    const essentialCheckboxes = document.querySelectorAll('.essential-check');
+    const checkBtn = document.querySelector('.check-btn');
+
+
+    function checkAllEssentialCheckboxes() {
+        const allChecked = Array.from(essentialCheckboxes).every((checkbox) => checkbox.checked);
+        checkBtn.disabled = !allChecked;
     }
+
+    essentialCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', checkAllEssentialCheckboxes);
+    });
+
+    checkAllEssentialCheckboxes();
+}
 
 
 // 셀렉트
 const selectBoxElements = document.querySelectorAll(".select");
 
 function toggleSelectBox(selectBox) {
-  selectBox.classList.toggle("active");
+    selectBox.classList.toggle("active");
 
 }
 
 function selectOption(optionElement) {
-  const selectBox = optionElement.closest(".select");
-  const selectedElement = selectBox.querySelector(".selected-value");
-  const etc = document.querySelector('.etc-input-box')
-  selectedElement.textContent = optionElement.textContent;
-  if(selectedElement.textContent === '기타'){
-    etc.classList.add('active')
-  }else{
-    etc.classList.remove('active')
-  }
-if(selectBox.classList.contains('blank-input')){
-    selectBox.classList.remove('blank-input')
-}
+    const selectBox = optionElement.closest(".select");
+    const selectedElement = selectBox.querySelector(".selected-value");
+    const etc = document.querySelector('.etc-input-box')
+    selectedElement.textContent = optionElement.textContent;
+    if(selectedElement.textContent === '기타'){
+        etc.classList.add('active')
+    }else{
+        etc.classList.remove('active')
+    }
+    if(selectBox.classList.contains('blank-input')){
+        selectBox.classList.remove('blank-input')
+    }
 }
 
 selectBoxElements.forEach(selectBoxElement => {
-  selectBoxElement.addEventListener("click", function (e) {
-    const targetElement = e.target;
-    const isOptionElement = targetElement.classList.contains("option");
+    selectBoxElement.addEventListener("click", function (e) {
+        const targetElement = e.target;
+        const isOptionElement = targetElement.classList.contains("option");
 
-    if (isOptionElement) {
-      selectOption(targetElement);
-    }
+        if (isOptionElement) {
+            selectOption(targetElement);
+        }
 
-    toggleSelectBox(selectBoxElement);
-  });
+        toggleSelectBox(selectBoxElement);
+    });
 });
 
 document.addEventListener("click", function (e) {
-  const targetElement = e.target;
-  const isSelect = targetElement.classList.contains("select") || targetElement.closest(".select");
+    const targetElement = e.target;
+    const isSelect = targetElement.classList.contains("select") || targetElement.closest(".select");
 
-  if (isSelect) {
-    return;
-  }
+    if (isSelect) {
+        return;
+    }
 
-  const allSelectBoxElements = document.querySelectorAll(".select");
+    const allSelectBoxElements = document.querySelectorAll(".select");
 
-  allSelectBoxElements.forEach(boxElement => {
-    boxElement.classList.remove("active");
-  });
+    allSelectBoxElements.forEach(boxElement => {
+        boxElement.classList.remove("active");
+    });
 });
-
 
 const popup = document.querySelector('.popup-login');
 const popupBg = document.querySelector('.popup-bg');
@@ -115,7 +111,7 @@ const tabBtn = document.querySelectorAll('.popup-content-header-tab-btn');
 const searchBox = document.querySelectorAll('.search-box');
 const popupForm = document.querySelectorAll('.popup-form');
 const popupSub = document.querySelectorAll('.popup-fail-search');
-    // console.log(popupForm)
+// console.log(popupForm)
 function popupOpen(index){
     popup.classList.add('active')
     popupBg.classList.add('active')
@@ -128,10 +124,8 @@ function popupOpen(index){
     searchBox.forEach(box => {
         box.classList.remove('active')
     });
-    
-    searchBox[index - 1].classList.add('active')
-    // console.log(searchBox)
 
+    searchBox[index - 1].classList.add('active')
 }
 
 function popupClose(){
@@ -168,7 +162,7 @@ function idSearch() {
     const emailInput = document.getElementById("email-id");
     const name = nameInput.value;
     const email = emailInput.value;
-    
+
     // 유효성 검사
     if (name === "" || name !== 'asd' ) {
         popup.classList.remove('active');
@@ -188,7 +182,7 @@ function pwSearch() {
     const emailInput = document.getElementById("email-pw");
     const name = nameInput.value;
     const email = emailInput.value;
-    
+
     // 유효성 검사
     if (name === "" || name !== 'asd' ) {
         popup.classList.remove('active');
@@ -222,7 +216,7 @@ function backBtn(index){
         back.classList.remove('active')
     });
     popupForm[index].classList.add('active')
-} 
+}
 
 function failCheck(){
     popup.classList.add('active')
@@ -262,38 +256,63 @@ function nextTermsForm(index){
     termsForm[index].classList.add('active');
 }
 
-
-
 // 회원가입 폼
-
 function validateForm() {
     const signFormInput = document.querySelectorAll('.terms-form.second .input:not(.etc-input)')
     const id = document.querySelector('.id-input');
     const password = document.querySelector('.pw-input');
     const confirmPassword = document.querySelector('.re-pw-input');
-    
+    const visitPath = document.querySelector('.selected-value');
+    const userName = document.querySelector('.name-input')
+    const birthday = document.querySelector('.date-input')
+    const gender = document.querySelector('.gender-input')
+    const phoneNumber = document.querySelector('.phne-input')
+    const email = document.querySelector('.email-input')
+    const emailVerifyNum = document.querySelector('.email-certification-input')
+    const termsConsent = document.getElementById('termsConsent').checked? '1' : '0'
+    const perConsent = document.getElementById('perConsent').checked? '1' : '0'
+    const advConsent = document.getElementById('advConsent').checked? '1' : '0'
+    const the3Consent = document.getElementById('the3AppYn').checked? '1' : '0'
+
+
+    const joinInfo = {
+        memberId : id.value,
+        passTxt : password.value,
+        memberNm : userName.value,
+        birthDt: birthday.value,
+        sexTp : gender.value,
+        telNo : phoneNumber.value,
+        inflowTp : visitPath.innerHTML,
+        emailId : email.value,
+        termsAppYn : termsConsent,
+        perAppYn : perConsent,
+        advConsent : advConsent,
+        the3AppYn : the3Consent
+    }
+
     let isValid = true;
     let foundEmptyInput = false;
-    
-    const signCoplete = () =>{
-        if(isValid){
+
+    const signComplete = async () =>{
+        if(isValid) {
             nextTermsForm(2)
+            const result = await axios.post('/join', joinInfo)
         }
+
     }
 
     signFormInput.forEach(input => {
-
         if (input.value === ""  &&  !foundEmptyInput   ) {
             input.parentElement.classList.add('blank-input');
             input.scrollIntoView({ behavior: "smooth" });
             isValid = false;
-            foundEmptyInput = true; 
+            foundEmptyInput = true;
         }else if(!foundEmptyInput){
-            if(input.innerText == '선택'){
+            if(input.innerText === '선택'){
                 input.parentElement.parentElement.classList.add('blank-input');
                 input.scrollIntoView({ behavior: "smooth" });
                 isValid = false;
-                foundEmptyInput = true; 
+                foundEmptyInput = true;
             }
         }
     });
@@ -319,7 +338,7 @@ function validateForm() {
     // }
 
     // If all checks pass, the form is valid
-    return signCoplete();
+    return signComplete();
 }
 
 
@@ -333,7 +352,7 @@ signFormInput.forEach(form => {
     });
 })
 
-//메일 인증번호 
+//메일 인증번호
 function emailPopToggle(){
     const emailPop = document.querySelector('.email-popup')
     emailPop.classList.toggle('active')
