@@ -297,6 +297,7 @@ function validateForm() {
         if(isValid) {
             nextTermsForm(2)
             const result = await axios.post('/join', joinInfo)
+            console.log(result)
         }
 
     }

@@ -24,7 +24,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class TokenManager implements CommandLineRunner {
     private RestTemplate restTemplate = new RestTemplate();;
-    private String authServerUrl = "http://172.26.176.51:8080";
+    private String authServerUrl = "http://172.27.10.45:8080";
     private final String realm = "master";
     private final String clientId = "admin-cli";
     private final String clientSecret = "9V2I1siDxckmlj3qesFsfUoGFtJ4XRRM";

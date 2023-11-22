@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -505,14 +505,14 @@
                     <div class="popup-body">
                         <div class="popup-input-row">
                             <div class="popup-input-box search-input">
-                                <input type="search" class="popup-input" placeholder="회사명, 사업자등록번호, 대표자명으로 검색">
-                                <button class="search-input-btn">
-                                    <img src="./assets/icon/search.svg" alt=""> 
+                                <input type="search" class="popup-input" id="param" placeholder="회사명, 사업자등록번호, 대표자명으로 검색">
+                                <button class="search-input-btn" onclick="searchCorp(document.getElementById('param').value)">
+                                    <img src="./assets/icon/search.svg" alt="">
                                 </button>
                             </div>
                         </div>
                         <span class="table-result">
-                            총 <span class="num">2</span> 건의 검색 결과
+                            총 <span class="num">1</span> 건의 검색 결과
                         </span>
                         <div class="table-box">
                             <table class="table">
@@ -520,53 +520,33 @@
                                 <col>
                                 <col>
                                 <col>
-                                <col>
-                                <col width="7%">
+                                <col width="80">
                                 </colgroup>
                                 <thead>
                                     <tr>
                                         <th class="th">회사명</th>
                                         <th class="th">사업자등록번호</th>
                                         <th class="th">대표자명</th>
-                                        <th class="th">주소</th>
                                         <th class="th">등록</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="td">
+                                        <td id="corpCd" style="display: none"></td>
+                                        <td class="td" id="corpNm">
                                             주식회사 비즈비
                                         </td>
-                                        <td class="td">
+                                        <td class="td" id="corpRegNo">
                                             573-81-02048
                                         </td>
-                                        <td class="td">
+                                        <td class="td" id="ceoNm">
                                             김태형
                                         </td>
+                                        
                                         <td class="td">
-                                            [06657] 서울 서초구 반포대로21길 3 , IWHA B1(서초동, 이화빌딩)
+                                            <button onclick="registerCorp()">등록</button>
                                         </td>
-                                        <td class="td">
-                                            <button>등록</button>
-                                        </td>
-                                    </tr> 
-                                    <tr>
-                                        <td class="td">
-                                            주식회사 비즈비
-                                        </td>
-                                        <td class="td">
-                                            573-81-02048
-                                        </td>
-                                        <td class="td">
-                                            김태형
-                                        </td>
-                                        <td class="td">
-                                            [06657] 서울 서초구 반포대로21길 3 , IWHA B1(서초동, 이화빌딩)
-                                        </td>
-                                        <td class="td">
-                                            <button >등록</button>
-                                        </td>
-                                    </tr> 
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

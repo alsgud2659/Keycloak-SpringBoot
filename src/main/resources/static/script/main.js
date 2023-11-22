@@ -14,6 +14,27 @@ async function getUserInfo() {
 
 getUserInfo()
 
+async function searchCorp(param) {
+  const result = await axios.post('/corp/query', {corpCd: param})
+  if (result.data) {
+    document.getElementById('corpCd').innerHTML = result.data.corpCd
+    document.getElementById('corpNm').innerHTML = result.data.corpNm
+    document.getElementById('corpRegNo').innerHTML = result.data.corpRegNo
+    document.getElementById('ceoNm').innerHTML = result.data.ceoNm
+  }else {
+    alert('검색결과가 없습니다.')
+  }
+}
+
+async function registerCorp() {
+  
+  // 회사등록 성공시 성공문구 출력 후 1.5초 뒤에 사라짐
+  document.getElementsByClassName('complete-registration')[0].classList.add('active')
+  setTimeout(() => {
+    document.getElementsByClassName('complete-registration')[0].classList.remove('active')
+  }, 1500)
+}
+
 function toggleSelectBox(selectBox) {
   selectBox.classList.toggle("active");
 }

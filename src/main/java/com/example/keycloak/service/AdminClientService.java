@@ -63,7 +63,7 @@ public class AdminClientService {
         user.setEmailVerified(true);
         user.setCredentials(Collections.singletonList(credentialRepresentation));
 
-        String url = "http://172.26.176.51:8080/admin/realms/my-realm/users";
+        String url = "http://172.19.72.166:8080/admin/realms/my-realm/users";
         RestTemplate rt = new RestTemplate();
 
         try {

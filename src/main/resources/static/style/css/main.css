@@ -747,8 +747,13 @@
 .all-in-one-wrap .popup-registration.active {
   display: flex;
 }
+
+.all-in-one-wrap .complete-registration.active {
+  display: inline;
+}
+
 .all-in-one-wrap .popup-registration.popup-table {
-  max-width: 1200px;
+  max-width: 800px;
 }
 .all-in-one-wrap .popup-registration.popup-select {
   max-width: 500px;
@@ -962,6 +967,7 @@
   max-width: 328px;
   line-height: 48px;
   text-align: center;
+  display: none;
 }
 
 .pc-show {
