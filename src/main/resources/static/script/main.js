@@ -56,16 +56,17 @@ async function setUserInfo() {
 async function searchCorp(param) {
 
   // TODO if -> catch
-  const result = await axios.post('/corp/query', {corpCd: param})
-  if (result.data) {
-    document.getElementById('corp-search-result').innerHTML = '1'
-    document.getElementById('corpCd').innerHTML = result.data.corpCd
-    document.getElementById('corpNm').innerHTML = result.data.corpNm
-    document.getElementById('corpRegNo').innerHTML = result.data.corpRegNo
-    document.getElementById('ceoNm').innerHTML = result.data.ceoNm
-  } else {
+  const result = await axios.post('/corp/query', {corpCd: param}).catch(err => {
+    console.log(err)
     alert('검색결과가 없습니다.')
-  }
+  })
+
+  document.getElementById('corp-search-result').innerHTML = '1'
+  document.getElementById('corpCd').innerHTML = result.data.corpCd
+  document.getElementById('corpNm').innerHTML = result.data.corpNm
+  document.getElementById('corpRegNo').innerHTML = result.data.corpRegNo
+  document.getElementById('ceoNm').innerHTML = result.data.ceoNm
+
 }
 
 /** 회사등록 팝업에서 등록버튼을 눌렀을 때 회사를 등록해주는 함수
