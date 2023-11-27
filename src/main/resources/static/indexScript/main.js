@@ -1,6 +1,6 @@
     // 스크롤에 따른 헤더효과
     const header = document.querySelector('.header')
-    let headerMoving = (direction) => {
+    const headerMoving = (direction) => {
       if (direction === "up") {
         header.classList.add("down")
       } else if (direction === "down") {

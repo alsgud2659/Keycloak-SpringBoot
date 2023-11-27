@@ -1,4 +1,4 @@
-package com.example.keycloak.mapper;
+package com.example.keycloak.domain.register;
 
 import org.apache.ibatis.annotations.Mapper;
 

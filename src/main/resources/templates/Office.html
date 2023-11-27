@@ -36,6 +36,23 @@
                         <span class="user-name"></span>님
                     </span>
                 </div>
+                <div class="select select-company">
+                    <div class="selected ">
+                        <div class="selected-value input">회사 선택</div>
+                        <img src="/assets/icon/select.svg" alt="arrow" class="arrow">
+                    </div>
+                    <ul id="myCorp">
+<!--                        <li class="option">-->
+<!--                            <span style="display:none">LMH</span>-->
+<!--                            주식회사 비즈비-->
+<!--                        <li class="option-btn">-->
+<!--                            <button onclick="popupRegOpen(0)">-->
+<!--                                <img src="/assets/icon/option-btn.svg" alt="플러스">-->
+<!--                                회사 등록-->
+<!--                            </button>-->
+<!--                        </li>-->
+                    </ul>
+                </div>
                 <a href="/sso-logout">
                     <button class="btn w logout">로그아웃</button>
                 </a>
@@ -125,15 +142,17 @@
                                 <span class="intro-contents-text" id="largeName">
 <!--                                    김현희님, 안녕하세요!-->
                                 </span>
-                                <button class="icon-btn">
-                                    <img src="./assets/icon/retouch.svg" alt="retouch">
-                                </button>
+                                <a href="/changeInfo">
+                                    <button class="icon-btn">
+                                        <img src="./assets/icon/retouch.svg" alt="retouch">
+                                    </button>
+                                </a>
                             </div>
                             <div class="intro-contents-info">
                                 <div class="intro-contents-info-flex">
                                     <img src="./assets/icon/memebership.svg" alt="회원종류">
-                                    <span class="membership">-</span>
-                                    <!-- <span class="membership">통합회원</span> -->
+                                    <span class="membership">통합회원</span>
+                                    <!-- <span class="membership">-</span> -->
                                 </div>
                                 <div class="intro-contents-info-flex">
                                     <img src="./assets/icon/company.svg" alt="회사이름">
@@ -183,7 +202,7 @@
                     <div class="use-service">
                         <!-- 이용중인 프로그램 없을때 -->
                         <div class="use-service-blank-text">
-                            <span>이용중인 서비스가 없습니다. <span>서비스를 이용하시려면  <button class="registration-btn">회사를 등록</button>해 주세요. </span></span>
+                            <span>이용중인 서비스가 없습니다. <span>서비스를 이용하시려면  <button class="registration-btn" onclick="popupRegOpen(0)">회사를 등록</button>해 주세요. </span></span>
                         </div>
                         <!-- 이용중인 프로그램 있을때 -->
                         <div class="use-service-card-box">
@@ -512,7 +531,7 @@
                             </div>
                         </div>
                         <span class="table-result">
-                            총 <span class="num">1</span> 건의 검색 결과
+                            총 <span class="num" id="corp-search-result">0</span> 건의 검색 결과
                         </span>
                         <div class="table-box">
                             <table class="table">
@@ -534,17 +553,14 @@
                                     <tr>
                                         <td id="corpCd" style="display: none"></td>
                                         <td class="td" id="corpNm">
-                                            주식회사 비즈비
                                         </td>
                                         <td class="td" id="corpRegNo">
-                                            573-81-02048
                                         </td>
                                         <td class="td" id="ceoNm">
-                                            김태형
                                         </td>
                                         
-                                        <td class="td">
-                                            <button onclick="registerCorp()">등록</button>
+                                        <td class="td" id="register-corp">
+                                            <button onclick="registerCorp(document.getElementById('corpCd').innerText)">등록</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -579,6 +595,27 @@
  
                             <li class="company-select-li">
                                 <span class="name">주식회사 비즈비</span>
+                                <div class="btn-box">
+                                    <button class="btn grey">삭제</button>
+                                    <button class="btn black">선택</button>
+                                </div>
+                            </li>
+                            <li class="company-select-li">
+                                <span class="name">비즈비 오피스</span>
+                                <div class="btn-box">
+                                    <button class="btn grey">삭제</button>
+                                    <button class="btn black">선택</button>
+                                </div>
+                            </li>
+                            <li class="company-select-li">
+                                <span class="name">비즈비 오피스</span>
+                                <div class="btn-box">
+                                    <button class="btn grey">삭제</button>
+                                    <button class="btn black">선택</button>
+                                </div>
+                            </li>
+                            <li class="company-select-li">
+                                <span class="name">비즈비 오피스</span>
                                 <div class="btn-box">
                                     <button class="btn grey">삭제</button>
                                     <button class="btn black">선택</button>

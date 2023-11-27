@@ -1,10 +1,10 @@
-package com.example.keycloak.model;
+package com.example.keycloak.domain.register.model;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class JoinVo {
+public class Register {
     private String memberId;
     private String passTxt;
     private String memberNm;

@@ -1,24 +1,21 @@
-package com.example.keycloak.controller;
+package com.example.keycloak.web.office;
 
-import com.example.keycloak.manager.TokenManager;
-import com.example.keycloak.model.JoinVo;
-import com.example.keycloak.model.UserInfoVo;
-import com.example.keycloak.service.AdminClientService;
-import com.example.keycloak.service.OfficeService;
+import com.example.keycloak.web.office.model.UserInfoDTO;
+import com.example.keycloak.domain.register.AdminClientService;
+import com.example.keycloak.domain.corp.CorpService;
 import lombok.RequiredArgsConstructor;
-import org.apache.http.HttpException;
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
 public class OfficeController {
     private final AdminClientService service;
+    private final CorpService corpService;
 
     @GetMapping(path ="/")
     public String index() {
@@ -60,10 +57,15 @@ public class OfficeController {
         return "Office";
     }
 
+    @GetMapping("/changeInfo")
+    public String changeInfo() {
+        return "changeInfo";
+    }
+
     @PostMapping("/getUserInfo")
     @ResponseBody
-    public UserInfoVo getUserInfo() {
-        UserInfoVo result = new UserInfoVo();
+    public UserInfoDTO getUserInfo() {
+        UserInfoDTO result = new UserInfoDTO();
         KeycloakAuthenticationToken authentication = (KeycloakAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         result.setUserId(authentication.getAccount().getKeycloakSecurityContext().getIdToken().getPreferredUsername());
         result.setName(authentication.getAccount().getKeycloakSecurityContext().getIdToken().getName());
@@ -72,15 +74,6 @@ public class OfficeController {
         return result;
     }
 
-    @PostMapping("/join")
-    @ResponseBody
-    public int join(@RequestBody JoinVo joinInfo) {
-        try {
-            service.applyUser(joinInfo);
-        }catch (Exception e) {
-            return 0;
-        }
-        return 1;
-    }
+
 
 }

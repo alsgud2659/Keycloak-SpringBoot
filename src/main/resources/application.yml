@@ -7,7 +7,7 @@ server:
 keycloak:
   enabled: true
   realm: my-realm
-  auth-server-url: http://172.26.176.51:8080
+  auth-server-url: http://172.23.62.255:8080
   ssl-required: external
   resource: test-client
   credentials:
@@ -40,5 +40,14 @@ spring:
       enabled: true
     restart:
       enabled: false
+  datasource:
+    hikari:
+      driver-class-name: org.postgresql.Driver
+      username: devoffice
+      password: 123qwe```
+      jdbc-url: jdbc:postgresql://dev.vmerp.net:54321/office_db
 
 
+
+mybatis:
+  mapper-locations: classpath:mappers/**/*.xml

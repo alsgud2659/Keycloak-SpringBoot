@@ -1,30 +1,22 @@
 package com.example.keycloak.manager;
 
-import com.example.keycloak.model.TokenSet;
-import com.nimbusds.oauth2.sdk.TokenResponse;
+import com.example.keycloak.entity.TokenSet;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.apache.http.HttpException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.http.*;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
 public class TokenManager implements CommandLineRunner {
-    private RestTemplate restTemplate = new RestTemplate();;
-    private String authServerUrl = "http://172.27.10.45:8080";
+    private RestTemplate restTemplate = new RestTemplate();
+    private String authServerUrl = "http://172.23.62.255:8080";
     private final String realm = "master";
     private final String clientId = "admin-cli";
     private final String clientSecret = "9V2I1siDxckmlj3qesFsfUoGFtJ4XRRM";
@@ -68,7 +60,7 @@ public class TokenManager implements CommandLineRunner {
 
         ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, Map.class);
 
-        if (response.getStatusCode() == HttpStatus.OK) {
+        if (response.getStatusCode().is2xxSuccessful()) {
             TokenSet tokenSet = new TokenSet();
             tokenSet.setAccessToken("Bearer " + response.getBody().get("access_token").toString());
             tokenSet.setRefreshToken(response.getBody().get("refresh_token").toString());

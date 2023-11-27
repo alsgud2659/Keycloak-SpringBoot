@@ -1,4 +1,4 @@
-package com.example.keycloak.model;
+package com.example.keycloak.entity;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,10 +1,10 @@
-package com.example.keycloak.model.corp;
+package com.example.keycloak.domain.corp.model;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class CorpVo {
+public class CorpDTO {
     private String corpCd;
     private String corpNm;
     private String corpRegNo;

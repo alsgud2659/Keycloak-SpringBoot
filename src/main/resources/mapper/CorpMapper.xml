@@ -1,12 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.keycloak.mapper.CorpMapper">
-    <select id="selectItgCorp" resultType="com.example.keycloak.model.corp.CorpVo">
+<mapper namespace="com.example.keycloak.domain.corp.CorpMapper">
+    <select id="selectItgCorp" resultType="com.example.keycloak.domain.corp.model.CorpDTO">
         SELECT A.CORP_CD
              , A.CORP_NM
              , A.CORP_REG_NO
              , A.CEO_NM
           FROM ITG_CORP A
          WHERE A.CORP_CD = #{corpCd}
+    </select>
+
+    <insert id="insertItgMemberCorpInfo">
+        INSERT INTO ITG_MEMBER_CORPINFO (
+               MEMBER_ID
+             , SEQ
+             , CORP_CD
+             , SORT_SEQ
+             , REMARK_TXT
+             , INSERT_DATETIME
+             , UPDATE_DATETIME
+        )VALUES (
+                #{memberId}
+              ,  (SELECT COALESCE(MAX(SEQ) + 1, 1) FROM ITG_MEMBER_CORPINFO)
+              , #{corpCd}
+              , 10
+              , #{remarkTxt}
+              , CURRENT_DATE
+              , CURRENT_DATE
+        )
+    </insert>
+
+    <select id="checkDuplicatedCorp" resultType="int">
+        SELECT COUNT(*)
+          FROM ITG_MEMBER_CORPINFO A
+         WHERE A.MEMBER_ID = #{memberId}
+           AND A.CORP_CD = #{corpCd}
+    </select>
+
+    <select id="selectItgMemberCorpInfo" resultType="com.example.keycloak.domain.corp.model.CorpDTO">
+          SELECT A.CORP_CD
+               , B.CORP_NM
+               , A.SORT_SEQ
+               , A.SEQ
+            FROM ITG_MEMBER_CORPINFO A
+ LEFT OUTER JOIN ITG_CORP B
+              ON A.CORP_CD = B.CORP_CD
+           WHERE A.MEMBER_ID = #{memberId}
     </select>
 </mapper>

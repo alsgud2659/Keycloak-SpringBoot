@@ -1,17 +1,11 @@
-package com.example.keycloak.service;
+package com.example.keycloak.domain.register;
 
 import com.example.keycloak.config.KeycloakConfiguration;
+import com.example.keycloak.domain.register.model.Register;
 import com.example.keycloak.manager.TokenManager;
-import com.example.keycloak.model.JoinVo;
-import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpException;
-import org.keycloak.admin.client.Config;
-import org.keycloak.admin.client.CreatedResponseUtil;
 import org.keycloak.admin.client.Keycloak;
-import org.keycloak.admin.client.resource.RealmResource;
-import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.http.*;
@@ -21,7 +15,6 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,11 +24,14 @@ import java.util.stream.Collectors;
 public class AdminClientService {
     Keycloak keycloak = new KeycloakConfiguration().keycloak();
     private final TokenManager tokenManager;
+
+    @Deprecated
     @PostConstruct
     public void SearchUsers() {
         searchByUsername("asd123", true);
     }
 
+    @Deprecated
     void searchByUsername(String username, boolean exact) {
         log.info("Searching by username: {} (exact {})", username, exact);
         List<UserRepresentation> users = keycloak.realm("my-realm")
@@ -43,10 +39,11 @@ public class AdminClientService {
                 .searchByUsername(username, exact);
 
         log.info("Users found by username {}", users.stream()
-                .map(user -> user.getUsername())
+                .map(UserRepresentation::getUsername)
                 .collect(Collectors.toList()));
     }
-    public void applyUser(JoinVo joinInfo) {
+
+    public void applyUser(Register joinInfo) {
         UserRepresentation user = new UserRepresentation();
 
         // 비밀번호
@@ -63,7 +60,7 @@ public class AdminClientService {
         user.setEmailVerified(true);
         user.setCredentials(Collections.singletonList(credentialRepresentation));
 
-        String url = "http://172.19.72.166:8080/admin/realms/my-realm/users";
+        String url = "http://172.23.62.255:8080/admin/realms/my-realm/users";
         RestTemplate rt = new RestTemplate();
 
         try {
@@ -71,7 +68,7 @@ public class AdminClientService {
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("Authorization", tokenManager.getAccessToken());
             HttpEntity<Object> entity = new HttpEntity<>(user, headers);
-            ResponseEntity<Object> result = rt.exchange(url.toString(), HttpMethod.POST, entity, Object.class);
+            ResponseEntity<Object> result = rt.exchange(url, HttpMethod.POST, entity, Object.class);
 
             System.out.println(result.getStatusCode());
 
