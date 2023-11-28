@@ -42,15 +42,12 @@
                         <img src="/assets/icon/select.svg" alt="arrow" class="arrow">
                     </div>
                     <ul id="myCorp">
-<!--                        <li class="option">-->
-<!--                            <span style="display:none">LMH</span>-->
-<!--                            주식회사 비즈비-->
-<!--                        <li class="option-btn">-->
-<!--                            <button onclick="popupRegOpen(0)">-->
-<!--                                <img src="/assets/icon/option-btn.svg" alt="플러스">-->
-<!--                                회사 등록-->
-<!--                            </button>-->
-<!--                        </li>-->
+                        <li class="option-btn">
+                            <button onclick="popupRegOpen(0)">
+                                <img src="/assets/icon/option-btn.svg" alt="플러스">
+                                회사 등록
+                            </button>
+                        </li>
                     </ul>
                 </div>
                 <a href="/sso-logout">
@@ -104,7 +101,7 @@
                         </ul>
                     </div>
                     <div class="btn-box">
-                        <button class="btn yel"><a href="./page/changeInfo.html">정보 수정</a></button>
+                        <button class="btn yel"><a href="/changeInfo">정보 수정</a></button>
                         <a href="/sso-logout">
                             <button class="btn w">로그아웃</button>
                         </a>
@@ -560,7 +557,7 @@
                                         </td>
                                         
                                         <td class="td" id="register-corp">
-                                            <button onclick="registerCorp(document.getElementById('corpCd').innerText)">등록</button>
+                                            <button id="insert-corp">등록</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -591,43 +588,14 @@
                         <span class="company-select-text">
                              서비스를 이용할 회사를 선택하세요.
                         </span>
-                        <ul class="company-select-ul">
- 
-                            <li class="company-select-li">
-                                <span class="name">주식회사 비즈비</span>
-                                <div class="btn-box">
-                                    <button class="btn grey">삭제</button>
-                                    <button class="btn black">선택</button>
-                                </div>
-                            </li>
-                            <li class="company-select-li">
-                                <span class="name">비즈비 오피스</span>
-                                <div class="btn-box">
-                                    <button class="btn grey">삭제</button>
-                                    <button class="btn black">선택</button>
-                                </div>
-                            </li>
-                            <li class="company-select-li">
-                                <span class="name">비즈비 오피스</span>
-                                <div class="btn-box">
-                                    <button class="btn grey">삭제</button>
-                                    <button class="btn black">선택</button>
-                                </div>
-                            </li>
-                            <li class="company-select-li">
-                                <span class="name">비즈비 오피스</span>
-                                <div class="btn-box">
-                                    <button class="btn grey">삭제</button>
-                                    <button class="btn black">선택</button>
-                                </div>
-                            </li>
-                            <li class="company-select-li">
-                                <span class="name">비즈비 오피스</span>
-                                <div class="btn-box">
-                                    <button class="btn grey">삭제</button>
-                                    <button class="btn black">선택</button>
-                                </div>
-                            </li>
+                        <ul class="company-select-ul" id="my-corp-popup-ul">
+<!--                            <li class="company-select-li">-->
+<!--                                <span class="name">주식회사 비즈비</span>-->
+<!--                                <div class="btn-box">-->
+<!--                                    <button class="btn grey">삭제</button>-->
+<!--                                    <button class="btn black">선택</button>-->
+<!--                                </div>-->
+<!--                            </li>-->
                         </ul>
                         <div class="table-btn-box">
                             <button class="middle yel btn" disabled>회사 선택 완료</button>

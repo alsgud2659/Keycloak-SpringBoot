@@ -20,4 +20,7 @@ public interface CorpMapper {
 
     /** 회사 선택 팝업에서 사용자가 등록해둔 회사 목록 조회 */
     List<CorpDTO> selectItgMemberCorpInfo(CorpParam param);
+
+    /** 통합회원회사정보 테이블에서 DELETE */
+    int deleteItgMemberCorpInfo(CorpParam param);
 }

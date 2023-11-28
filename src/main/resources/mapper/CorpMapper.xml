@@ -47,4 +47,11 @@
               ON A.CORP_CD = B.CORP_CD
            WHERE A.MEMBER_ID = #{memberId}
     </select>
+
+    <delete id="deleteItgMemberCorpInfo">
+        DELETE
+          FROM ITG_MEMBER_CORPINFO A
+         WHERE A.CORP_CD = #{corpCd}
+           AND A.MEMBER_ID = #{memberId}
+    </delete>
 </mapper>

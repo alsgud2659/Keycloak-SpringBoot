@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequiredArgsConstructor
 public class OfficeController {
     private final AdminClientService service;
-    private final CorpService corpService;
 
     @GetMapping(path ="/")
     public String index() {

@@ -29,4 +29,8 @@ public class CorpService {
     public List<CorpDTO> getMyCorp(CorpParam param) {
         return mapper.selectItgMemberCorpInfo(param);
     }
+
+    public int deleteCorp(CorpParam param) {
+        return mapper.deleteItgMemberCorpInfo(param);
+    }
 }
