@@ -46,6 +46,7 @@
  LEFT OUTER JOIN ITG_CORP B
               ON A.CORP_CD = B.CORP_CD
            WHERE A.MEMBER_ID = #{memberId}
+        ORDER BY A.SORT_SEQ
     </select>
 
     <delete id="deleteItgMemberCorpInfo">

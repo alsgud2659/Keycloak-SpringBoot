@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 public class KeycloakConfiguration {
 
     @Value("${keycloak.auth-server-url}")
-    private String authServerUrl = "http://172.23.62.255:8080";
+    private String authServerUrl = "http://172.19.192.3:8080";
 
     @Value("${keycloak.realm}")
     private String realm = "my-realm";

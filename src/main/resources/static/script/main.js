@@ -27,7 +27,7 @@ if(registrationCom === 0){
 // 렌더링 완료시 실행됨
 window.onload = async function () {
   await getUserInfo()
-  await setUserInfo()
+  setUserInfo()
   await getMyCorp()
   getMyCorpInHeader()
   getMyCorpInPopup()
@@ -45,7 +45,7 @@ async function getUserInfo() {
 }
 
 /** 유저정보를 헤더 바에 넣어주는 함수 */
-async function setUserInfo() {
+function setUserInfo() {
   const userName = document.querySelectorAll('.user-name')
   const largeName = document.getElementById('largeName')
 
@@ -99,6 +99,10 @@ async function registerCorp(corpCd) {
       setTimeout(() => {
         $completeRegistration.classList.remove('active')
       }, 1500);
+      // 회사선택 팝업 및 회사 셀렉트 박스 회사리스트 갱신
+      await getMyCorp();
+      getMyCorpInPopup();
+      getMyCorpInHeader()
       break;
     case 2:
       alert('이미 등록된 회사입니다.')
@@ -120,20 +124,27 @@ async function getMyCorp() {
 
 /** 헤더의 셀렉트 박스에 사용 가능한 회사 목록을 조회해주는 함수 */
 function getMyCorpInHeader() {
-  const myCorpUl = document.getElementById('myCorp')
-
+  const $myCorpUl = document.getElementById('myCorp')
+  // 셀렉트 박스를 재갱신 하는 경우가 있기 때문에 초기화
+  $myCorpUl.innerHTML = ''
+  
   // 데이터가 있는 경우에만 회사 리스트를 헤더의 회사 선택 셀렉트박스에 넣어줌
   if(myCorp.corpList.length > 0) {
     const newList = myCorp.corpList.map(item =>
-        `<li class="option"><span style="display:none">${item.corpCd}</span>${item.corpNm}</li>`
+        `<li class="option corp-list"><span style="display:none">${item.corpCd}</span>${item.corpNm}</li>`
     )
-    myCorpUl.innerHTML = newList.join('') + myCorpUl.innerHTML
+    $myCorpUl.innerHTML = newList.join('') + $myCorpUl.innerHTML
   }
 }
 
-/** 회사 선택 팝업에 사용 가능한 회사 목록을 조회해주는 함수 */
+/**
+ * 회사 선택 팝업에 사용 가능한 회사 목록을 조회해주는 함수
+ * @Param 재갱신 여부 플래그값(flag)
+ */
 function getMyCorpInPopup() {
-  const myCorpPopupUl = document.getElementById('my-corp-popup-ul')
+  const $myCorpPopupUl = document.getElementById('my-corp-popup-ul')
+  // 재갱신을 하는 경우가 있기 때문에 'ul'태그 내부를 초기화
+  $myCorpPopupUl.innerHTML = ''
 
   // 데이터가 있는 경우에만 실행
   if(myCorp.corpList.length > 0) {
@@ -141,16 +152,53 @@ function getMyCorpInPopup() {
       `
         <li class="company-select-li">
           <span style="display:none" class="code">${item.corpCd}</span>
-          <span class="name">${item.corpNm}</span>
+          <span class="name corp-name">${item.corpNm}</span>
             <div class="btn-box">
-              <button class="btn grey">삭제</button>
-              <button class="btn black">선택</button>
+              <button class="btn grey delete">삭제</button>
+              <button class="btn black pick">선택</button>
             </div>
         </li>
       `
     )
-    myCorpPopupUl.innerHTML = newList.join('') + myCorpPopupUl.innerHTML
+    $myCorpPopupUl.innerHTML = newList.join('') + $myCorpPopupUl.innerHTML
   }
+}
+
+/**
+ * 사용자가 등록한 회사를 삭제해주는 함수 삭제 후 리스트 재갱신
+ * @Param 회사코드(corpCd)
+ */
+async function deleteMyCorp(corpCd) {
+  const param = {
+    corpCd : corpCd,
+    memberId : userInfo.userId
+  }
+
+  await axios.post('/corp/delete', param).catch(err => {
+    console.error(err)
+    alert('회사를 삭제하는데 실패했습니다.')
+  })
+  alert('회사를 삭제했습니다.')
+
+  // 회사 목록 갱신
+  await getMyCorp()
+  getMyCorpInPopup()
+  getMyCorpInHeader()
+}
+
+/**
+ * 사용자가 선택한 회사에 맞도록 프로필, 헤더를 갱신해주는 함수
+ * @Param 회사코드(corpCd)
+ * @Param 회사명(corpNm)
+ */
+function updateProfile(corpCd, corpNm) {
+  const $selectedCorp = document.querySelectorAll('.selected-corp')
+  const $corpList = document.querySelectorAll('.corp-list')
+  $selectedCorp.forEach(item => item.innerHTML = corpNm)
+  $corpList.forEach( ({textContent, classList}) => {
+    // textContent 사용시 corpCd + corpNm의 형태로 나오기 때문에 textContent === corpCd + corpNm로 비교해야 함
+    textContent === corpCd + corpNm ? classList.add('selected-option') : classList.remove('selected-option')
+  })
 }
 
 // *********************
@@ -163,6 +211,26 @@ document.getElementById('insert-corp').addEventListener('click', e => {
   registerCorp(corpCd);
 })
 
+/** 회사 선택 팝업에서 삭제, 선택 버튼 클릭시 발생하는 이벤트 */
+document.getElementById('my-corp-popup-ul').addEventListener('click', e => {
+  const clickedElement = e.target
+  const listItem = clickedElement.closest('.company-select-li')
+  const corpCdElement = listItem?.querySelector('.code')
+  const corpNmElement = listItem?.querySelector('.corp-name')
+  const corpCd = corpCdElement?.innerText
+  const corpNm = corpNmElement?.innerText
+
+  // 삭제버튼 클릭 이벤트
+  if(clickedElement.classList.contains('delete')) {
+    corpCd && deleteMyCorp(corpCd);
+  }
+
+  // 등록버튼 클릭 이벤트
+  if(clickedElement.classList.contains('pick')) {
+    corpCd && updateProfile(corpCd, corpNm)
+  }
+});
+
 document.addEventListener("click", function (e) {
   const targetElement = e.target;
   const isSelect = targetElement.classList.contains("select") || targetElement.closest(".select");
@@ -174,23 +242,6 @@ document.addEventListener("click", function (e) {
   allSelectBoxElements.forEach(boxElement => {
     boxElement.classList.remove("active");
   });
-});
-
-document.addEventListener('click', function(event) {
-  // 클릭된 요소가 '삭제' 버튼인지 확인합니다.
-  if (event.target.classList.contains('btn') && event.target.classList.contains('grey')) {
-    // 가장 가까운 'li' 태그를 찾습니다.
-    const listItem = event.target.closest('.company-select-li');
-    if (listItem) {
-      // 'li' 태그 내에서 가장 가까운 'span' 태그를 찾습니다.
-      const spanElement = listItem.querySelector('.code');
-      if (spanElement) {
-        // 'span' 태그의 내용을 가져옵니다.
-        const spanText = spanElement.innerText;
-        console.log(spanText); // 여기서 spanText를 이용하여 원하는 작업을 수행할 수 있습니다.
-      }
-    }
-  }
 });
 
 // *********************
@@ -214,6 +265,12 @@ function selectOption(optionElement) {
   });
 
   selectedElement.innerText = selectedText;
+
+  // 회사선택 셀렉트 박스의 경우 선택한 회사의 이름을 프로필에도 들어가야함
+  if(selectBox.classList.contains('corp-select-box')) {
+    const $selectedCorp = document.querySelectorAll('.selected-corp')
+    $selectedCorp.forEach(item => item.innerHTML = selectBox.children[0].children[0].innerText)
+  }
 }
 
 selectBoxElements.forEach(selectBoxElement => {
@@ -227,9 +284,6 @@ selectBoxElements.forEach(selectBoxElement => {
   });
 });
 
-
-
-
 //헤더 버튼
 function profileToggle(){
   const profileBtn =  document.querySelector('.user-profile-detail');
@@ -238,7 +292,6 @@ function profileToggle(){
   popHeader.classList.toggle('active')
   // e.stopPropagation();
 }
-
 
 function popupClose(){
   popupBg.classList.remove('active');

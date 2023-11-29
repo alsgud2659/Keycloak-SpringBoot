@@ -30,7 +30,7 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
                 .antMatchers("/join").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("http://172.19.237.35:8080/realms/my-realm/protocol/openid-connect/auth")
+                .loginPage("http://172.19.192.3:8080/realms/my-realm/protocol/openid-connect/auth")
                 .permitAll()
                 .and()
                 .logout()
