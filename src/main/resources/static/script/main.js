@@ -60,6 +60,7 @@ function setUserInfo() {
  * @Param 회사코드(corpCd)
  */
 async function searchCorp(corpCd) {
+  if(corpCd === '' || !corpCd) return alert('회사코드를 입력해주세요')
   const { data } = await axios.post('/corp/query', { corpCd }).catch(err => {
     console.error(err)
     alert('조회중에 오류가 발생했습니다.')
@@ -153,10 +154,10 @@ function getMyCorpInPopup() {
         <li class="company-select-li">
           <span style="display:none" class="code">${item.corpCd}</span>
           <span class="name corp-name">${item.corpNm}</span>
-            <div class="btn-box">
-              <button class="btn grey delete">삭제</button>
-              <button class="btn black pick">선택</button>
-            </div>
+          <div class="btn-box">
+            <button class="btn grey delete">삭제</button>
+            <button class="btn black pick">선택</button>
+          </div>
         </li>
       `
     )
@@ -199,6 +200,7 @@ function updateProfile(corpCd, corpNm) {
     // textContent 사용시 corpCd + corpNm의 형태로 나오기 때문에 textContent === corpCd + corpNm로 비교해야 함
     textContent === corpCd + corpNm ? classList.add('selected-option') : classList.remove('selected-option')
   })
+  userInfo.curCorp = corpCd
 }
 
 // *********************
@@ -266,10 +268,11 @@ function selectOption(optionElement) {
 
   selectedElement.innerText = selectedText;
 
-  // 회사선택 셀렉트 박스의 경우 선택한 회사의 이름을 프로필에도 들어가야함
+  // 회사선택 셀렉트 박스의 경우 선택한 회사의 이름이 프로필에도 들어가야함
   if(selectBox.classList.contains('corp-select-box')) {
     const $selectedCorp = document.querySelectorAll('.selected-corp')
-    $selectedCorp.forEach(item => item.innerHTML = selectBox.children[0].children[0].innerText)
+    $selectedCorp.forEach(item => item.innerHTML = selectedElement.innerText)
+    userInfo.curCorp = optionElement.querySelector('span').innerText
   }
 }
 
