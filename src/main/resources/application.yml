@@ -40,12 +40,7 @@ spring:
       enabled: true
     restart:
       enabled: false
-  datasource:
-    hikari:
-      driver-class-name: org.postgresql.Driver
-      username: devoffice
-      password: 123qwe```
-      jdbc-url: jdbc:postgresql://dev.vmerp.net:54321/office_db
+
 
 
 
